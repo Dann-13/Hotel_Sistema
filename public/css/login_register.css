@@ -1,0 +1,48 @@
+.container__Principal {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.left,
+.right {
+  width: 50%;
+  height: 100%;
+  padding: 20px; /* agregar un espacio entre el contenido y los bordes */
+}
+
+.main-register {
+  display: none;
+}
+.lado-registro {
+  display: none;
+}
+.imagen__fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -20%);
+  width: 100%;
+  transition: transform 0.5s ease-out; /* Agregar transición */
+  z-index: -1;
+}
+.imagen__fondo--derecha {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  right: 0;
+  transform: translate(50%, -20%);
+}
+
+
+.imagen__fondo img {
+  width: 100%;
+}
+
+
+.main-login--mostrar, .lado-login--mostrar, .main-register--mostrar, .lado-registro--mostrar{ 
+  display: block;
+}
+.main-login--oculto, .lado-login--oculto{
+  display: none;
+}
