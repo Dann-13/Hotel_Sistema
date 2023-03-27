@@ -10,9 +10,6 @@
   padding: 20px; /* agregar un espacio entre el contenido y los bordes */
 }
 
-.main-register {
-  display: none;
-}
 .lado-registro {
   display: none;
 }
@@ -31,18 +28,22 @@
   width: 100%;
   z-index: -1;
   right: 0;
+  transition: transform 0.5s ease-out; /* Agregar transición */
   transform: translate(50%, -20%);
 }
-
 
 .imagen__fondo img {
   width: 100%;
 }
 
-
-.main-login--mostrar, .lado-login--mostrar, .main-register--mostrar, .lado-registro--mostrar{ 
+.main-login--mostrar,
+.lado-login--mostrar,
+.main-register--mostrar,
+.lado-registro--mostrar {
   display: block;
 }
-.main-login--oculto, .lado-login--oculto{
+.main-login--oculto,
+.lado-login--oculto,
+.main-register, .lado-registro  {
   display: none;
 }

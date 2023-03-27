@@ -47,10 +47,8 @@
         <section class="right">
             <section class="lado-registro">
                 <p class="title">¿Ya estas Registrado?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae dolores maxime voluptas tenetur
-                    ex, aliquam nam dignissimos in possimus non obcaecati quo officia rem corrupti et, quisquam, id
-                    fugit!</p>
-                <button btn="btn__login">Login</button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae dolores maxime voluptas</p>
+                <button class="btn__login">Login</button>
                 <img src="../../public/img/login.png" alt="" srcset="">
             </section>
             <section class="main-login">
