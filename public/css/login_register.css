@@ -2,12 +2,43 @@
   display: flex;
   width: 100%;
   height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  font-size: 24px;
 }
 .left,
 .right {
-  width: 50%;
+  width: 40%;
   height: 100%;
   padding: 20px; /* agregar un espacio entre el contenido y los bordes */
+}
+.lado-login--mostrar{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+.lado-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.lado-login img {
+  width: 100%;
+  height: auto;
+}
+.main-login {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .lado-registro {
@@ -35,7 +66,68 @@
 .imagen__fondo img {
   width: 100%;
 }
+.lado-registro--mostrar {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.imgSecciones {
+  width: 400px;
+}
+.imgSecciones img {
+  width: 100%;
+  height: auto;
+}
+.main-register--mostrar{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
 
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  width: 100%;
+  position: relative;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+input,
+button {
+  
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  padding: 10px 30px;
+}
+
+input {
+  width: 100%;
+  background: #e6e6e6;
+  letter-spacing: 0.5px;
+  padding: 14px 64px;
+}
+
+input ~ i {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  transition: color 0.4s;
+}
+
+input:focus ~ i {
+  color: #134e5e;
+}
 .main-login--mostrar,
 .lado-login--mostrar,
 .main-register--mostrar,
@@ -65,32 +157,32 @@
     flex-direction: column;
     justify-content: center;
   }
-  .lado-login{
+  .lado-login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center ;
+    justify-content: center;
   }
   .lado-login img {
     width: 100%;
     height: auto;
   }
-  .container{
+  .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .right{
+  .right {
     width: 80%;
   }
-  .lado-registro--mostrar{
+  .lado-registro--mostrar {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .lado-registro--mostrar img{
+  .lado-registro--mostrar img {
     width: 100%;
     height: auto;
   }

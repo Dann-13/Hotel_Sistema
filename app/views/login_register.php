@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/login_register.css">
+
+
     <title>Bienvenidos</title>
 </head>
 
@@ -18,26 +20,32 @@
 
             <section class="lado-login">
                 <p class="title">¿No Tienes una Cuenta?</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque quod doloribus, similique illo
-                    aliquam
-                    recusandae quisquam reiciendis dignissimos laborum non quidem, voluptatibus fuga repudiandae
-                    deserunt
-                    porro
-                    inventore neque saepe exercitationem!</p>
+                <p>Puedes registrate dando click al siguiente boton!</p>
                 <button class="btn__registro">Registro</button>
-                <img src="../../public/img/recepcion.png" alt="recepcion">
+                <div class="imgSecciones">
+                    <img src="../../public/img/recepcion.png" alt="recepcion">
+                </div>
+
             </section>
             <section class="main-register">
                 <div class="container">
                     <h1>Register</h1>
                     <form action="">
                         <div class="form-control">
-                            <input type="text" placeholder="Usuario">
+                            <input type="email" placeholder="Correo">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="form-control">
                             <input type="password" placeholder="Contraseña">
                             <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="form-control">
+                            <input type="text" placeholder="Nombre">
+                            <i class="fa-solid fa-signature"></i>
+                        </div>
+                        <div class="form-control">
+                            <input type="text" placeholder="Apellido">
+                            <i class="fa-solid fa-signature"></i>
                         </div>
                         <button type="submit">Registro</button>
                     </form>
@@ -47,9 +55,11 @@
         <section class="right">
             <section class="lado-registro">
                 <p class="title">¿Ya estas Registrado?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae dolores maxime voluptas</p>
+                <p>Regresa e inicia secion con tu usuario y conteaseña</p>
                 <button class="btn__login">Login</button>
-                <img src="../../public/img/login.png" alt="" srcset="">
+                <div class="imgSecciones">
+                    <img src="../../public/img/login.png" alt="" srcset="">
+                </div>
             </section>
             <section class="main-login">
                 <div class="container">
@@ -71,6 +81,7 @@
 
     </div>
     <script src="../../public/js/login_register.js"></script>
+    <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

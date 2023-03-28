@@ -41,7 +41,7 @@ btnLogin.addEventListener("click", () =>{
   seccionLogin.classList.add("lado-registro");
   //Ahora mostramos de nuevo el login
   seccionRegistro.classList.remove("lado-login--oculto")
-  seccionRegistro.classList.add("lado-login--mostrar");
+  seccionRegistro.classList.add("lado-login");
   formLogin.classList.remove("main-login--oculto");
   
 });
