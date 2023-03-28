@@ -19,6 +19,7 @@ boton.addEventListener("click", () => {
   // a su vez ocultamos form login
   formLogin.classList.add("main-login--oculto");
   // y la seccion en donde preguntamos si no tiene cuenta
+  seccionRegistro.classList.remove("lado-login");
   seccionRegistro.classList.add("lado-login--oculto");
   // la seccion se mostrara para preguntarle si ya tiene una cuenta ps
   seccionLogin.classList.remove("lado-registro");

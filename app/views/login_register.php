@@ -52,7 +52,7 @@
                 <img src="../../public/img/login.png" alt="" srcset="">
             </section>
             <section class="main-login">
-                <div class="Container">
+                <div class="container">
                     <h1>Login</h1>
                     <form action="">
                         <div class="form-control">

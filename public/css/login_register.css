@@ -44,6 +44,54 @@
 }
 .main-login--oculto,
 .lado-login--oculto,
-.main-register, .lado-registro  {
+.main-register,
+.lado-registro {
   display: none;
+}
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  .imagen__fondo {
+    transform: translate(-20%, -40%);
+    width: 150%;
+  }
+  .container__Principal {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .left {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .lado-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center ;
+  }
+  .lado-login img {
+    width: 100%;
+    height: auto;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .right{
+    width: 80%;
+  }
+  .lado-registro--mostrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .lado-registro--mostrar img{
+    width: 100%;
+    height: auto;
+  }
 }
