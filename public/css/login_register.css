@@ -1,7 +1,7 @@
 .container__Principal {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   justify-content: space-between;
   align-items: center;
 }
@@ -11,6 +11,9 @@
 }
 .left,
 .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40%;
   height: 100%;
   padding: 20px; /* agregar un espacio entre el contenido y los bordes */
