@@ -1,3 +1,7 @@
+a{
+    text-decoration: none;
+    color: black;
+}
 .encabezado {
   display: flex;
   align-items: center;
@@ -38,6 +42,7 @@ main h2{
   display: flex;
   justify-content: space-evenly;
   padding-top: 80px;
+  padding-bottom: 80px;
 }
 table {
   border-collapse: collapse;
@@ -84,4 +89,18 @@ th {
 }
 .btn__delete:hover {
   background-color: #8e3e3e;
+}
+
+.contenido__footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.contenido__footer p{
+    font-size: 20px;
+}
+.redes a{
+    font-size: 20px;
 }

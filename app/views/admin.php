@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/admin.css">
+    <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
 
     <title>Administrador</title>
 
@@ -52,6 +53,15 @@
             </div>
         </div>
         <main>
+            <footer>
+                <div class="contenido__footer">
+                    <p>Desarrollado por: equipo 1 Aunar xd</p>
+                    <div class="redes">
+                        <a href=""><i class="fa-brands fa-github"></i></a>
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+            </footer>
 </body>
 
 </html>
