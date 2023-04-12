@@ -18,32 +18,33 @@
             <div class="imgClass">
                 <img src="../../public/img/hotel.png" alt="">
             </div>
-            <a href="" class="btn__User">Usuarios</a>
-            <a href="" class="btn__reserva">Reservas</a>
+            <a href="admin_usuarios.php" class="btn__User">Usuarios</a>
+            <a href="#" class="btn__reserva">Reservas</a>
         </div>
     </header>
     <main>
         <h2>Bienvenido! Administrador1</h2>
         <div class="contenido">
             <div class="imgClass">
-                <img src="../../public/img/admin.png" alt="" srcset="">
+                <img src="../../public/img/reserva.svg" alt="" srcset="">
             </div>
             <div class="tabla">
                 <table>
                     <thead>
-                        <caption>Lista de Usuarios Registrados</caption>
+                        <caption>Lista de Reservas Registradas</caption>
                         <tr>
                             <th>Nombre</th>
-                            <th>Correo electrónico</th>
-                            <th>Contraseña</th>
+                            <th>fecha</th>
+                            <th>Habitacion</th>
+                            <th>Precio</th>
                             <th colspan="2">Opciones</th> <!-- Columna unida que contiene dos columnas más -->
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>John Doe</td>
-                            <td>john.doe@example.com</td>
-                            <td>********</td>
+                            <td>23/12/2023</td>
+                            <td>$30.000</td>
                             <td><button class="btn__edit">Editar</button></td>
                             <td><button class="btn__delete">Eliminar</button></td>
                         </tr>
