@@ -31,6 +31,7 @@
             <div class="tabla">
                 <table>
                     <thead>
+                        <caption>Lista de Usuarios Registrados</caption>
                         <tr>
                             <th>Nombre</th>
                             <th>Correo electrónico</th>
