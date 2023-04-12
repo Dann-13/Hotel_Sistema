@@ -1,0 +1,87 @@
+.encabezado {
+  display: flex;
+  align-items: center;
+}
+.imgClass {
+  width: 200px;
+  height: auto;
+  padding-right: 50px;
+}
+.imgClass img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn__User {
+  text-decoration: none;
+  color: black;
+  padding: 2px 15px;
+  font-size: 20px;
+}
+.btn__User:hover {
+  border-bottom: 5px green solid;
+}
+.btn__reserva {
+  text-decoration: none;
+  color: black;
+  padding: 2px 15px;
+  font-size: 20px;
+}
+.btn__reserva:hover {
+  border-bottom: 5px green solid;
+}
+main h2{
+    text-align: center;
+    padding-top: 15px;
+}
+.contenido {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 80px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  text-align: center;
+  background-color: #f2f2f2;
+}
+.btn__edit {
+  padding: 6px 12px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.btn__edit:hover {
+  background-color: #3e8e41;
+}
+.btn__delete {
+  padding: 6px 12px;
+  background-color: #af4c4c;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.btn__delete:hover {
+  background-color: #8e3e3e;
+}
