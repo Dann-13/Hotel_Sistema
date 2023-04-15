@@ -16,7 +16,7 @@
     <header>
         <div class="encabezado">
             <div class="imgClass">
-                <img src="../../public/img/hotel.png" alt="">
+                <img src="../../public/img/Tumaco/logo1-removebg-preview.png" alt="">
             </div>
             <a href="admin_usuarios.php" class="btn__User">Usuarios</a>
             <a href="#" class="btn__reserva">Reservas</a>
@@ -59,7 +59,7 @@
                 <div class="contenido__footer">
                     <p>Desarrollado por: equipo 1 Aunar xd</p>
                     <div class="redes">
-                        <a href=""><i class="fa-brands fa-github"></i></a>
+                        <a href="https://github.com/Dann-13/Hotel_Sistema_php"><i class="fa-brands fa-github"></i></a>
                         <a href=""><i class="fa-brands fa-facebook"></i></a>
                     </div>
                 </div>

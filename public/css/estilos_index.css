@@ -83,7 +83,7 @@ body {
 }
 
 .img {
-    background-image: url('./Tumaco/Morro.jpg');
+    background-image: url('../img/Tumaco/Morro.jpg');
     background-size: cover;
 }
 

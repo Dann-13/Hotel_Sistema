@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../public/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
     <link rel="stylesheet" href="../../public/css/login_register.css">
 
 
@@ -12,13 +13,18 @@
 </head>
 
 <body>
+
     <div class="container__Principal">
         <div class="imagen__fondo">
             <img src="../../public/img/fondo.png" alt="fondo" srcset="">
         </div>
         <section class="left">
 
+
             <section class="lado-login">
+                <div id="logo">
+                    <a href="../../public/index.php"><img src="../../public/img/Tumaco/logo1-removebg-preview.png" alt="Hotel Playa Cristal"></a>
+                </div>
                 <p class="title">¿No Tienes una Cuenta?</p>
                 <p>Puedes registrate dando click al siguiente boton!</p>
                 <button class="btn__registro">Registro</button>
