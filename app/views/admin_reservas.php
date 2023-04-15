@@ -21,6 +21,7 @@
             </div>
             <a href="admin_usuarios.php" class="btn__User">Usuarios</a>
             <a href="#" class="btn__reserva">Reservas</a>
+            <a href="../../public/index.php" class="btn__reserva">Salir</a>
         </div>
     </header>
     <main>
@@ -32,7 +33,11 @@
             <div class="tabla">
                 <table>
                     <thead>
-                        <caption>Lista de Reservas Registradas</caption>
+                        <form action="" class="buscador" id="form" style="padding: 15px;">
+                            <input type="text" name="buscador" id="buscador" class="inputBuscador" placeholder="¿Que decea buscar?" data-info>
+                            <button type="submit" class="button_buscar" >Buscar</button>
+                        </form>
+                        <caption style="padding: 30px 0">Lista de Reservas Registradas</caption>
                         <tr>
                             <th>Nombre</th>
                             <th>fecha</th>
@@ -46,7 +51,7 @@
                             <td>John Doe</td>
                             <td>23/12/2023</td>
                             <td>$30.000</td>
-                            <td><button class="btn__edit">Editar</button></td>
+                            <td><a href="../views/admin_edicion.php"><button class="btn__edit">Editar</button></a></td>
                             <td><button class="btn__delete">Eliminar</button></td>
                         </tr>
                         <!-- Más filas de datos -->
