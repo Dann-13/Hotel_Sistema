@@ -1,0 +1,8 @@
+table {
+    margin: auto;
+}
+
+.selected {
+    display: block;
+    width: 50%;
+}
