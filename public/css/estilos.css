@@ -1,0 +1,387 @@
+.container1 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.image1 {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    order: 1;
+    /* Cambiar el orden de la imagen */
+}
+
+.text1 {
+    flex: 1 1 auto;
+    text-align: right;
+    /* Alinear el texto a la izquierda */
+}
+
+.title1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.description1 {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.image {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.text {
+    flex: 1 1 auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+body {
+    font: 15 px Arial;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0%;
+
+}
+
+.img {
+    background-image: url('./Tumaco/Morro.jpg');
+    background-size: cover;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.mi_hr4 {
+    height: 8px;
+    border: 0;
+    background-image: linear-gradient(to right,
+            #f9fd0a 0%,
+            #f9fd0a 33%,
+            #1907bd 33%,
+            #1907bd 66%,
+            #c20000 66%,
+            #c20000 100%);
+    margin: 20px 0;
+}
+
+.carousel-caption h5 {
+    color: rgb(0, 0, 0);
+}
+
+.carousel-caption p1 {
+    color: rgb(0, 0, 0);
+}
+
+.carousel-caption h5,
+.carousel-caption p1 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.carousel-item img {
+    transition: transform 0.5s ease;
+}
+
+.carousel-item img:hover {
+    transform: scale(1.2);
+}
+
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    text-align: center;
+    font-family: 'oblique bold', cursive;
+}
+
+.mi_hr {
+    width: 50%;
+    height: 5px;
+    border: none;
+    background-color: #f9fd0a;
+    margin: 20px auto;
+}
+
+.mi_hr1 {
+    width: 50%;
+    height: 5px;
+    border: none;
+    background-color: #1907bd;
+    margin: 20px auto;
+}
+
+.mi_hr2 {
+    width: 50%;
+    height: 5px;
+    border: none;
+    background-color: #c20000;
+    margin: 20px auto;
+}
+
+.mi_hr3 {
+    background-color: #ffffff;
+    margin: 4px auto;
+}
+
+.caja1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 13px;
+    width: 200px;
+    height: 170px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.caja1 img {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.caja1 h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.caja1 p {
+    margin-top: 10
+}
+
+
+/*Encabezado*/
+
+header {
+    color: rgb(245, 241, 241);
+    padding-top: 30px;
+    border-bottom: #776cd4 5px solid;
+    min-height: 70px;
+}
+
+header a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header nav {
+    margin-top: 10px;
+    float: right;
+}
+
+header #marca {
+    float: left;
+}
+
+header #marca h1 {
+    margin: 0;
+}
+
+header .resaltado,
+header .actual a {
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #776cd4;
+}
+
+#boton {
+    position: fixed;
+    top: 30%;
+    right: 0;
+    transform: translate(-5%, -30%);
+    background-color: #776cd4;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 2px 2px rgb(12, 101, 153);
+}
+
+#whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+#cabecera {
+    min-height: 400px;
+    color: white;
+    text-align: center;
+}
+
+#cabecera1 {
+    min-height: 200px;
+    color: #24282b;
+}
+
+#cabecera2 {
+    min-height: 100px;
+    color: #24282b;
+}
+
+#cabecera2 h3 {
+    margin-top: 2px;
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+
+#cabecera2 p {
+    margin-top: 2px;
+    font-size: 15px;
+    margin-bottom: 2%;
+}
+
+#cabecera h2 {
+    margin-top: 100px;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+/*Formulario*/
+
+#boletin {
+    padding: 8px;
+    background: linear-gradient(to bottom right, #776cd4, rgb(93, 212, 245));
+    color: white;
+}
+
+#boletin form {
+    float: right;
+    margin-top: 15px;
+}
+
+#boletin h1 {
+    float: left;
+}
+
+#boletin input[type="email"] {
+    padding: 4px;
+    height: 25px;
+    width: 250px;
+}
+
+#cajas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#cajas .caja {
+    float: left;
+    text-align: center;
+    width: 30%;
+    padding: 10px;
+}
+
+#cajas .caja img {
+    width: 200px;
+}
+
+#cajas .caja1 {
+    float: left;
+    text-align: center;
+    width: 14%;
+    padding: 10px;
+}
+
+#cajas .caja1 img {
+    width: 30px;
+}
+
+#logo {
+    float: left;
+    margin-right: 30px;
+}
+
+#logo img {
+    width: 100px;
+    height: auto;
+}
+
+footer {
+    padding: 20px;
+    margin-top: 2px;
+    text-align: center;
+    color: rgb(44, 43, 43);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    font-size: 18px;
+}
