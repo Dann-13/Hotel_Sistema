@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../public/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../public/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../public/css/login_register.css">
+    <link rel="shortcut icon" href="resources/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
+    <link rel="shortcut icon" href="resources/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="resources/css/login_register.css">
 
 
     <title>Bienvenidos</title>
@@ -17,41 +17,41 @@
 
     <div class="container__Principal">
         <div class="imagen__fondo">
-            <img src="../../public/img/fondo.png" alt="fondo" srcset="">
+            <img src="resources/img/fondo.png" alt="fondo" srcset="">
         </div>
         <section class="left">
 
 
             <section class="lado-login">
                 <div id="logo">
-                    <a href="../../public/index.php"><img src="../../public/img/Tumaco/logo1-removebg-preview.png" alt="Hotel Playa Cristal"></a>
+                    <a href="../../public/index.php"><img src="resources/img/Tumaco/logo1-removebg-preview.png" alt="Hotel Playa Cristal"></a>
                 </div>
                 <p class="title">¿No Tienes una Cuenta?</p>
                 <p>Puedes registrate dando click al siguiente boton!</p>
                 <button class="btn__registro">Registro</button>
                 <div class="imgSecciones">
-                    <img src="../../public/img/recepcion.png" alt="recepcion">
+                    <img src="resources/img/recepcion.png" alt="recepcion">
                 </div>
 
             </section>
             <section class="main-register">
                 <div class="container">
                     <h1>Register</h1>
-                    <form action="">
+                    <form action="register" method="POST">
                         <div class="form-control">
-                            <input type="email" placeholder="Correo">
+                            <input type="email" placeholder="Correo" name="correo">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="form-control">
-                            <input type="password" placeholder="Contraseña">
+                            <input type="password" placeholder="Contraseña" name="contraseña">
                             <i class="fas fa-unlock"></i>
                         </div>
                         <div class="form-control">
-                            <input type="text" placeholder="Nombre">
+                            <input type="text" placeholder="Nombre" name="nombre">
                             <i class="fa-solid fa-signature"></i>
                         </div>
                         <div class="form-control">
-                            <input type="text" placeholder="Apellido">
+                            <input type="text" placeholder="Apellido" name="apellido">
                             <i class="fa-solid fa-signature"></i>
                         </div>
                         <button type="submit">Registro</button>
@@ -65,19 +65,19 @@
                 <p>Regresa e inicia secion con tu usuario y conteaseña</p>
                 <button class="btn__login">Login</button>
                 <div class="imgSecciones">
-                    <img src="../../public/img/login.png" alt="" srcset="">
+                    <img src="resources/img/login.png" alt="" srcset="">
                 </div>
             </section>
             <section class="main-login">
                 <div class="container">
                     <h1>Login</h1>
-                    <form action="">
+                    <form action="auth" method="POST">
                         <div class="form-control">
-                            <input type="text" placeholder="Usuario">
+                            <input type="text" name="user" id="user" placeholder="Usuario">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="form-control">
-                            <input type="password" placeholder="Contraseña">
+                            <input type="password" name="pass" id="pass" placeholder="Contraseña">
                             <i class="fas fa-unlock"></i>
                         </div>
                         <button type="submit">Entrar</button>
@@ -87,7 +87,7 @@
         </section>
 
     </div>
-    <script src="../../public/js/login_register.js"></script>
+    <script src="resources/js/login_register.js"></script>
     <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
 </body>
 

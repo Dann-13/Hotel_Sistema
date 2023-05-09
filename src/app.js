@@ -35,9 +35,12 @@ app.use(session({
 const DataBase = require('./models/database');
 //Inicializamos a base de datos 
 DataBase.connect();
-//---- index
+//----rutas
 app.get('/', (req, res) =>{
     res.render("index")
+})
+app.get('/login', (req, res) =>{
+    res.render("login_register")
 })
 app.listen(5000, ()=>{
     console.log("servidor en http://localhost:5000")
