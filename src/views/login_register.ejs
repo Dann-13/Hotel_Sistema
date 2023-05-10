@@ -37,23 +37,23 @@
             <section class="main-register">
                 <div class="container">
                     <h1>Register</h1>
-                    <form action="register" method="POST">
+                    <form action="login_register" method="POST">
                         <div class="form-control">
                             <input type="email" placeholder="Correo" name="correo">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="form-control">
-                            <input type="password" placeholder="Contraseña" name="contraseña">
+                            <input type="password" placeholder="Contraseña" name="contrasena">
                             <i class="fas fa-unlock"></i>
                         </div>
                         <div class="form-control">
                             <input type="text" placeholder="Nombre" name="nombre">
                             <i class="fa-solid fa-signature"></i>
                         </div>
-                        <div class="form-control">
-                            <input type="text" placeholder="Apellido" name="apellido">
-                            <i class="fa-solid fa-signature"></i>
-                        </div>
+                        <select name="rol" id="rol" >
+                            <option value="admin">Administrador</option>
+                            <option value="data-entry">Usuario</option>
+                        </select>
                         <button type="submit">Registro</button>
                     </form>
                 </div>
@@ -89,6 +89,22 @@
     </div>
     <script src="resources/js/login_register.js"></script>
     <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+     <!--Para poder usar el alert en la platilla de ejs-->
+     <% if (typeof alert !="undefined" ) { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon%>',
+                showConfirmButton:<%= showConfirmButton %>,
+                timer: <%= timer %>
+                    }).then(() => {
+                    window.location = '/ <%= ruta %>'
+                })
+        </script>
+        <% } %>
 </body>
 
 </html>
