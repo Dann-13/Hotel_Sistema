@@ -73,7 +73,7 @@
                     <h1>Login</h1>
                     <form action="auth" method="POST">
                         <div class="form-control">
-                            <input type="text" name="user" id="user" placeholder="Usuario">
+                            <input type="text" name="correo" id="user" placeholder="Usuario">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="form-control">
@@ -101,7 +101,7 @@
                 showConfirmButton:<%= showConfirmButton %>,
                 timer: <%= timer %>
                     }).then(() => {
-                    window.location = '/ <%= ruta %>'
+                    window.location = '/<%= ruta %>'
                 })
         </script>
         <% } %>
