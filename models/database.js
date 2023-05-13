@@ -7,7 +7,6 @@ class Database {
   }
 
   async connect() {
-    console.log(process.env.DB_HOST)
     try {
       this.connection = await mysql.createConnection({
         host: process.env.DB_HOST,
@@ -44,3 +43,4 @@ class Database {
 }
 
 module.exports = Database;
+

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
+const Usuario = require('../models/Usuario');
 
 // variables de session
 const session = require('express-session');
@@ -14,7 +15,7 @@ router.use(session({
 const Database = require('../models/database');
 //Inicializamos a base de datos 
 const db = new Database();
-db.connect();
+
 //va las rutas
 router.get('/', (req, res) => {
     res.render("index")
@@ -29,41 +30,41 @@ router.post('/login_register', async (req, res) => {
     const nombre = req.body.nombre;
     const rol = req.body.rol;
     let passwordHash = await bcryptjs.hash(contrasena, 8);
-    // Insertar el nuevo usuario en la base de datos
     try {
-        const sql = 'INSERT INTO usuarios (correo, contrasena, nombre, rol) VALUES (?, ?, ?, ?)';
-        const values = [correo, passwordHash, nombre, rol];
-        await db.query(sql, values);
+        const nuevoUsuario = new Usuario(correo, passwordHash, nombre, rol);
+        //esperamos que termine de registrar para seguir la ejecucion de lo de abajo
+        await nuevoUsuario.registrar();
+        
         res.render('login_register', {
             alert: true,
-            alertTitle: "Registro",
-            alertMessage: "Registro Exitoso",
+            alertTitle: 'Registro',
+            alertMessage: 'Registro Exitoso',
             alertIcon: 'success',
             showConfirmButton: false,
             timer: 1500,
-            ruta: ''
-        })
+            ruta: '',
+        });
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.render('login_register', {
             alert: true,
-            alertTitle: "Error",
-            alertMessage: "Incorrecto",
-            alertIcon: "error",
+            alertTitle: 'Error',
+            alertMessage: 'Incorrecto',
+            alertIcon: 'error',
             showConfirmButton: true,
             timer: false,
-            ruta: ''
+            ruta: '',
         });
     }
 });
 //la utentificacion o login
-router.post('/auth', async (req, res) => {
+/* router.post('/auth', async (req, res) => {
     const email = req.body.correo;
     console.log(email)
     const pass = req.body.pass;
     console.log(pass)
     let passwordHaash = await bcryptjs.hash(pass, 8);
-    if(email && pass){
+    if (email && pass) {
         try {
             await db.connect();
             const sql = 'SELECT * FROM usuarios WHERE correo = ?';
@@ -99,7 +100,7 @@ router.post('/auth', async (req, res) => {
         } catch (err) {
             console.log(err)
         }
-    }else{
+    } else {
         res.render('login_register', {
             alert: true,
             alertTitle: "Advertencia",
@@ -110,9 +111,46 @@ router.post('/auth', async (req, res) => {
             ruta: 'login_register'
         })
     }
-    
 
-})
+
+}) */
+router.post('/auth', async (req, res) =>{
+    const email = req.body.correo;
+    const pass = req.body.pass;
+    try{
+        const result = await  Usuario.autenticar(email, pass);
+        if(email && pass){
+            if(result){
+                res.render('reserva');
+            }else{
+                res.render('index');
+                res.send("NO estas registrado")
+            }
+        }else{
+            res.render('login_register', {
+                alert: true,
+                alertTitle: "Advertencia",
+                alertMessage: "Ingrese una contraseña",
+                alertIcon: "warning",
+                showConfirmButton: false,
+                timer: 1500,
+                ruta: 'login_register'
+            });
+        }
+        
+    }catch(err){
+        console.log(err);
+    }
+});
 //autenticado usuario para todas las paginas 
+
+
+//crean formulario con el mismo nombre "reserva"
+router.get('/reserva', (req, res) => {
+    res.render("reserva")
+})
+router.get('/listado_reserva', (req, res) => {
+    res.render("listado_reserva")
+})
 
 module.exports = router;
