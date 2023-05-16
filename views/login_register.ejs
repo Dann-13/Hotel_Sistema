@@ -24,7 +24,7 @@
 
             <section class="lado-login">
                 <div id="logo">
-                    <a href="../../public/index.php"><img src="resources/img/Tumaco/logo1-removebg-preview.png" alt="Hotel Playa Cristal"></a>
+                    <a href="/"><img src="resources/img/Tumaco/logo1-removebg-preview.png" alt="Hotel Playa Cristal"></a>
                 </div>
                 <p class="title">¿No Tienes una Cuenta?</p>
                 <p>Puedes registrate dando click al siguiente boton!</p>
@@ -92,7 +92,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
      <!--Para poder usar el alert en la platilla de ejs-->
-     <% if (typeof alert !="undefined" ) { %>
+     <% if (typeof alert1 !="undefined" ) { %>
         <script>
             Swal.fire({
                 title: '<%= alertTitle %>',
@@ -104,6 +104,32 @@
                     window.location = '/<%= ruta %>'
                 })
         </script>
+        <% } %>
+        <% if (typeof alert2 !== 'undefined') { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: <%= showConfirmButton %>,
+                    timer: <%= timer %>
+                }).then(() => {
+                    window.location = 'reserva<%= ruta %>'
+                })
+            </script>
+        <% } %>
+        <% if (typeof alert3 !== 'undefined') { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: <%= showConfirmButton %>,
+                    timer: <%= timer %>
+                }).then(() => {
+                    window.location = 'admin<%= ruta %>'
+                })
+            </script>
         <% } %>
 </body>
 

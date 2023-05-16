@@ -1,7 +1,7 @@
 const Database = require('./database');
 const bcryptjs = require('bcryptjs')
 class Usuario {
-  constructor(correo, contrasena, nombre, rol) {
+  constructor(correo, contrasena, nombre,rol) {
     this.nombre = nombre;
     this.correo = correo;
     this.contrasena = contrasena;
@@ -31,11 +31,12 @@ class Usuario {
       const sql = 'SELECT * FROM usuarios WHERE correo = ?';
       const values = [correo];
       const result = await db.query(sql, values);
+      console.log(result[0]);
       //no esta
       if (result.length == 0 || !(await bcryptjs.compare(contrasena, result[0].contrasena))) {
         return false;
       } else { //esta 
-        return true;
+        return result;
       }
     } catch (error) {
       console.error(`Error al autenticar el usuario: ${error}`);

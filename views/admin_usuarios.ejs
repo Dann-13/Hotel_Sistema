@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="resources/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/admin.css">
+    <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
+
+    <title>Administrador</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="encabezado">
+            <div class="imgClass">
+                <img src="resources/img/Tumaco/logo1-removebg-preview.png" alt="">
+            </div>
+            <a href="#" class="btn__User">Usuarios</a>
+            <a href="admin_reservas.php" class="btn__reserva">Reservas</a>
+            <a href="resources/index.php" class="btn__reserva">Salir</a>
+        </div>
+    </header>
+    <div class="contenedor">
+        <% if (login) {%>
+            <h1>Usuario conectado: <strong>
+                    <%= nombre %>
+                </strong></h1>
+            <main>
+                <h2>Bienvenido! Administrador1</h2>
+                <div class="contenido">
+                    <div class="imgClass">
+                        <img src="../../public/img/admin.svg" alt="" srcset="">
+                    </div>
+                    <div class="tabla">
+                        <table>
+                            <thead>
+                                <form action="" class="buscador" id="form" style="padding: 15px;">
+                                    <input type="text" name="buscador" id="buscador" class="inputBuscador"
+                                        placeholder="¿Que decea buscar?" data-info>
+                                    <button type="submit" class="button_buscar">Buscar</button>
+                                </form>
+                                <caption style="padding: 30px 0">Lista de Usuarios Registrados</caption>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo electrónico</th>
+                                    <th>Contraseña</th>
+                                    <th colspan="2">Opciones</th> <!-- Columna unida que contiene dos columnas más -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>john.doe@example.com</td>
+                                    <td>********</td>
+                                    <td><a href="../views/admin_edicion.php"><button
+                                                class="btn__edit">Editar</button></a></td>
+                                    <td><button class="btn__delete">Eliminar</button></td>
+                                </tr>
+                                <!-- Más filas de datos -->
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </main>
+            <a href="logout" class="a-logout">Cerrar sesión</a>
+
+            <!--Mensaje de Regstro extoso-->
+            <% } else {%>
+                <h1>Inicie sesion</h1>
+                <h1><strong>
+                        <%= name %>
+                    </strong></h1>
+                <a href="login" class="a-login">Ir a Login</a>
+                <% } %>
+    </div>
+    <footer>
+        <div class="contenido__footer">
+            <p>Desarrollado por: equipo 1 Aunar xd</p>
+            <div class="redes">
+                <a href="https://github.com/Dann-13/Hotel_Sistema_php"><i class="fa-brands fa-github"></i></a>
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
