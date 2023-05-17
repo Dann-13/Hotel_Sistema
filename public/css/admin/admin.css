@@ -1,3 +1,6 @@
+body{
+  background-color: #F8F8F8;
+}
 a{
     text-decoration: none;
     color: black;
@@ -5,6 +8,11 @@ a{
 .encabezado {
   display: flex;
   align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 16px -3px #193C59; 
+  box-shadow: 0px 0px 16px -3px #193C59;
+  
 }
 .imgClass {
   width: 200px;
@@ -23,7 +31,7 @@ a{
   font-size: 20px;
 }
 .btn__User:hover {
-  border-bottom: 5px green solid;
+  border-bottom: 5px #337ab7 solid;
 }
 .btn__reserva {
   text-decoration: none;
@@ -32,7 +40,7 @@ a{
   font-size: 20px;
 }
 .btn__reserva:hover {
-  border-bottom: 5px green solid;
+  border-bottom: 5px #337ab7 solid;
 }
 main h2{
     text-align: center;

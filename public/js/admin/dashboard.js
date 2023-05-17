@@ -19,3 +19,17 @@ enlacesMenu.forEach(enlace => {
         iconoMenu.classList.replace("bx-menu", "bx-x")
     })
 })
+
+const botonOpciones = document.getElementById('boton-opciones');
+const opciones = document.getElementById('opciones');
+
+botonOpciones.addEventListener('click', () => {
+    opciones.classList.toggle('mostrar');
+  opciones.classList.toggle('menu__opciones');
+});
+
+document.addEventListener('click', (event) => {
+  if (!botonOpciones.contains(event.target) && !opciones.contains(event.target)) {
+    opciones.classList.add('menu__opciones');
+  }
+});

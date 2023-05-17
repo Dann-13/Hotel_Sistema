@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/css/dashboard.css">
+    <link rel="stylesheet" href="resources/css/admin/dashboard.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
 
@@ -26,7 +26,7 @@
                         <div class="logo">
                             <img src="resources/img/Tumaco/logo.png" alt="">
                         </div>
-                        
+
                     </div>
                     <!-- INPUT SEARCH -->
                     <!-- <div class="input-search">
@@ -47,7 +47,7 @@
 
                         <div class="enlace">
                             <i class="bx bx-grid-alt"></i>
-                            <a href="admin_usuarios">Reservas</a>
+                            <a href="admin_reservas">Reservas</a>
                         </div>
 
                         <div class="enlace">
@@ -62,24 +62,41 @@
                     </div>
                 </div>
                 <div class="container-principal">
-                    <div class="menu">
+                    <div class="container__menu__user">
 
                         <div class="menu__user">
                             <i class="fa-solid fa-user"></i>
-                            <p class="name__user"><%= nombre %></p>
+                            <p class="name__user">
+                                <%= nombre %>
+                            </p>
+                            <button id="boton-opciones"><i class="fa fa-chevron-down"></i></button>
+                            <div id="opciones" class="menu__opciones">
+                                <ul>
+                                    <li>Opciones</li>
+                                    <li>Opción 2</li>
+                                    <li><a href="logout">Salir</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="menu__buscar">
                             <input type="text" placeholder="Buscar" class="input__buscar">
-                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button type="submit" class="btn__buscar"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+
                         </div>
                     </div>
                     <div class="container__info">
-                        <h1 class="h1__bienvenida">Bienvenido Administrador</h1>
-                        <p class="p__bienvenida">¡Hola! Este es el panel de control de nuestro sitio web, 
-                            diseñado especialmente para ti como administrador.
-                            Espero que disfrutes de tu experiencia aquí y que tengas una buena 
-                            instancia administrando nuestro sitio.
-                        </p>
+                        <div class="container__bienvenida">
+                            <h1 class="h1__bienvenida">Bienvenido Administrador</h1>
+                            <p class="p__bienvenida">¡Hola! Este es el panel de control de nuestro sitio web,
+                                diseñado especialmente para ti como administrador.
+                                Espero que disfrutes de tu experiencia aquí y que tengas una buena
+                                instancia administrando nuestro sitio.
+                            </p>
+                        </div>
+                        <div class="container-slider">
+
+                        </div>
                     </div>
                 </div>
             </main>
@@ -92,7 +109,7 @@
                 <% } %>
     </div>
 
-<script src="resources/js/dashboard.js"></script>
+    <script src="resources/js/admin/dashboard.js"></script>
 </body>
 
 </html>

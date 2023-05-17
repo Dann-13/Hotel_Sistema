@@ -1,7 +1,7 @@
 const Database = require('./database');
 const bcryptjs = require('bcryptjs')
 class Usuario {
-  constructor(correo, contrasena, nombre,rol) {
+  constructor(correo, contrasena, nombre, rol) {
     this.nombre = nombre;
     this.correo = correo;
     this.contrasena = contrasena;
@@ -45,7 +45,23 @@ class Usuario {
       await db.disconnect();
     }
   }
+  static async obtenerTodos() {
+    const db = new Database();
+    await db.connect();
   
+    try {
+      const sql = 'SELECT * FROM usuarios';
+      const result = await db.query(sql);
+      return result;
+    } catch (error) {
+      console.error(`Error al obtener los usuarios: ${error}`);
+      return [];
+    } finally {
+      await db.disconnect();
+    }
+  }
+  
+
 }
 
 module.exports = Usuario;

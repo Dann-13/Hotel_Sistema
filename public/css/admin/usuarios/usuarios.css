@@ -1,0 +1,36 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-button {
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #23527c;
+  }
+  .name{
+    font-size: 25px;
+    padding: 25px 0 25px 0;
+  }
+  .tabla{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }

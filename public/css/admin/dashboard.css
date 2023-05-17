@@ -136,9 +136,11 @@ body {
 .menu-dashboard.open {
     max-width: 300px;
 }
-.menu-dashboard.open .top-menu .logo img{
-  width: 150px;
+
+.menu-dashboard.open .top-menu .logo img {
+    width: 150px;
 }
+
 .menu-dashboard.open .top-menu .logo a {
     display: block;
 }
@@ -171,47 +173,131 @@ body {
 }
 
 .container-principal {
+    background-color: #F8F8F8;
     height: auto;
     flex-grow: 1;
 
 }
-.menu__buscar{
-  padding-top: 15px;
+
+.menu__buscar {
+    padding: 15px 0 15px 0;
 }
+
 .input__buscar {
     padding: 10px 0 10px 0;
     border: none;
     border-radius: 4px;
     box-shadow: 0 0 5px #ccc;
-    font-size: 16px;
 }
-.menu__user{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.btn__buscar {
+    border: none;
+}
+
+.btn__buscar i {
+    border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    color: white;
+    background: var(--bg-menu);
+}
+
+.container__menu__user {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu__user {
+    padding: 25px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .name__user {
+    padding: 0 15px 0 15px;
     color: black;
 }
+#boton-opciones{
+    background: var(--bg-menu);
+}
+#boton-opciones i{
+    color: white;
+}
+#opciones {
+    position: absolute;
+    top: 60px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all .3s ease;
+}
 
-.fa-user{
-  font-size: 40px;
-  color: #003053;
+#opciones.mostrar {
+    opacity: 1;
+    transform: translateY(0);
 }
-.container__info{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px 15px 20px 15px;
+
+#opciones ul li {
+    list-style: none;
+    color: black;
+    padding: 5px 35px 5px 35px;
+}
+
+.fa-user {
+    font-size: 40px;
+    color: #003053;
+}
+
+.container__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 15px 20px 15px;
 
 }
-.h1__bienvenida{
-  color: black;
-  font-size: 19px;
-  padding-bottom: 15px;
+.container__bienvenida{
+    
 }
-.p__bienvenida{
-  color: black;
-  font-size: 14px;
+.h1__bienvenida {
+    color: black;
+    font-size: 19px;
+    padding-bottom: 15px;
+}
+
+.p__bienvenida {
+    color: black;
+    font-size: 14px;
+}
+
+/* pantallas grandes */
+@media (min-width: 1024px) {
+    .container__menu__user {
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        flex-direction: none;
+    }
+
+    .menu__user {
+        flex-direction: row;
+        padding: 15px 0 15px 0;
+    }
+
+    .input__buscar {
+        padding: 10px 15px 10px 15px;
+    }
+
+    .btn__buscar i {
+        font-size: 20px;
+    }
+
+    .name__user {
+        padding: 0 25px 0 25px;
+    }
 }

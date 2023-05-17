@@ -126,12 +126,25 @@ router.get('/admin', (req, res)=>{
         })
     }
 })
-router.get('/admin_usuarios', (req, res)=>{
+router.get('/admin_usuarios', async (req, res)=>{
     if(req.session.loggedin && req.session.rol === 'admin'){
-        res.render('admin_usuarios',{
-            login:true,
-            nombre: req.session.nombre
-        });
+        try{
+            const usuarios = await Usuario.obtenerTodos();
+            res.render('admin_usuarios',{
+                login:true,
+                nombre: req.session.nombre,
+                usuarios:usuarios
+            });
+        }catch(err){
+            console.log("error al obtener usuarios " + err)
+            res.render('admin_usuarios',{
+                login: true,
+                nombre: req.session.nombre,
+                usuarios: [] // En caso de error, pasar una lista vacía
+            })
+
+        }
+        
     }else{
         res.render('admin_usuarios',{
             login:false,

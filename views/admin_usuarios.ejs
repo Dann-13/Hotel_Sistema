@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="resources/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/css/admin.css">
+    <link rel="stylesheet" href="resources/css/reset.css">
+    <link rel="stylesheet" href="resources/css/admin/usuarios/usuarios.css">
+    <link rel="stylesheet" href="resources/css/admin/admin.css">
     <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
 
     <title>Administrador</title>
@@ -17,7 +19,7 @@
     <header>
         <div class="encabezado">
             <div class="imgClass">
-                <img src="resources/img/Tumaco/logo1-removebg-preview.png" alt="">
+                <img src="resources/img/Tumaco/logo.png" alt="">
             </div>
             <a href="#" class="btn__User">Usuarios</a>
             <a href="admin_reservas.php" class="btn__reserva">Reservas</a>
@@ -26,22 +28,22 @@
     </header>
     <div class="contenedor">
         <% if (login) {%>
-            <h1>Usuario conectado: <strong>
-                    <%= nombre %>
-                </strong></h1>
             <main>
-                <h2>Bienvenido! Administrador1</h2>
+                <h2 class="name">Bienvenido! <%= nombre %>
+                </h2>
                 <div class="contenido">
                     <div class="imgClass">
-                        <img src="../../public/img/admin.svg" alt="" srcset="">
+                        <img src="resources/img/admin.svg" alt="" srcset="">
                     </div>
                     <div class="tabla">
                         <table>
                             <thead>
                                 <form action="" class="buscador" id="form" style="padding: 15px;">
-                                    <input type="text" name="buscador" id="buscador" class="inputBuscador"
-                                        placeholder="¿Que decea buscar?" data-info>
-                                    <button type="submit" class="button_buscar">Buscar</button>
+                                    <div class="search-container">
+                                        <input type="text" placeholder="¿Que desea buscar?" class="search-input">
+                                        <button class="search-button"><i class="fa fa-search"></i></button>
+                                    </div>
+
                                 </form>
                                 <caption style="padding: 30px 0">Lista de Usuarios Registrados</caption>
                                 <tr>
@@ -52,22 +54,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>john.doe@example.com</td>
-                                    <td>********</td>
-                                    <td><a href="../views/admin_edicion.php"><button
-                                                class="btn__edit">Editar</button></a></td>
-                                    <td><button class="btn__delete">Eliminar</button></td>
-                                </tr>
-                                <!-- Más filas de datos -->
+                                <% usuarios.forEach(usuario=> { %>
+                                    <tr>
+                                        <td><%= usuario.nombre %></td>
+                                        <td><%=usuario.correo%></td>
+                                        <td><%=usuario.contrasena%></td>
+                                        <td><a href="../views/admin_edicion.php"><button
+                                                    class="btn__edit">Editar</button></a></td>
+                                        <td><button class="btn__delete">Eliminar</button></td>
+                                    </tr>
+                                    <% }); %>
+                                    <!-- Más filas de datos -->
                             </tbody>
                         </table>
 
                     </div>
                 </div>
             </main>
-            <a href="logout" class="a-logout">Cerrar sesión</a>
+
 
             <!--Mensaje de Regstro extoso-->
             <% } else {%>
