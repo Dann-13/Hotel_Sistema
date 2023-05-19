@@ -22,8 +22,8 @@
                 <img src="resources/img/Tumaco/logo.png" alt="">
             </div>
             <a href="#" class="btn__User">Usuarios</a>
-            <a href="admin_reservas.php" class="btn__reserva">Reservas</a>
-            <a href="resources/index.php" class="btn__reserva">Salir</a>
+            <a href="admin_reservas" class="btn__reserva">Reservas</a>
+            <a href="logout" class="btn__reserva">Salir</a>
         </div>
     </header>
     <div class="contenedor">
@@ -59,8 +59,7 @@
                                         <td><%= usuario.nombre %></td>
                                         <td><%=usuario.correo%></td>
                                         <td><%=usuario.contrasena%></td>
-                                        <td><a href="../views/admin_edicion.php"><button
-                                                    class="btn__edit">Editar</button></a></td>
+                                        <td><a href="/admin_edicion/<%= usuario.id_usuario %>" class="btn__edit">Editar</a></td>
                                         <td><button class="btn__delete">Eliminar</button></td>
                                     </tr>
                                     <% }); %>

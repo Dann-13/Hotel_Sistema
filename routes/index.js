@@ -31,7 +31,7 @@ router.post('/login_register', async (req, res) => {
     const rol = req.body.rol;
     let passwordHash = await bcryptjs.hash(contrasena, 8);
     try {
-        const nuevoUsuario = new Usuario(correo, passwordHash, nombre,rol);
+        const nuevoUsuario = new Usuario(correo, passwordHash, nombre, rol);
         //esperamos que termine de registrar para seguir la ejecucion de lo de abajo
         await nuevoUsuario.registrar();
         res.render('login_register', {
@@ -56,19 +56,18 @@ router.post('/login_register', async (req, res) => {
         });
     }
 });
-router.post('/auth', async (req, res) =>{
+router.post('/auth', async (req, res) => {
     const email = req.body.correo;
     const pass = req.body.pass;
-    try{
-        const result = await  Usuario.autenticar(email, pass);
-        console.log(result);
-        if(email && pass){
-            if(result.length > 0){
+    try {
+        const result = await Usuario.autenticar(email, pass);
+        if (email && pass) {
+            if (result.length > 0) {
                 req.session.loggedin = true;
                 req.session.nombre = result[0].nombre;
                 req.session.correo = result[0].correo;
                 req.session.rol = result[0].rol;
-                if(result[0].rol == 'admin'){
+                if (result[0].rol == 'admin') {
                     res.render('login_register', {
                         alert3: true,
                         alertTitle: "Conexión Exitosa",
@@ -78,7 +77,7 @@ router.post('/auth', async (req, res) =>{
                         timer: 1500,
                         ruta: ''
                     })
-                }else{
+                } else {
                     res.render('login_register', {
                         alert2: true,
                         alertTitle: "Conexión Exitosa",
@@ -89,13 +88,13 @@ router.post('/auth', async (req, res) =>{
                         ruta: ''
                     })
                 }
-                
-            }else{
-                res.render('index');   
-                console.log('ni esta regustrado')             
+
+            } else {
+                res.render('index');
+                console.log('ni esta regustrado')
             }
             res.end()
-        }else{
+        } else {
             res.render('login_register', {
                 alert1: true,
                 alertTitle: "Advertencia",
@@ -105,77 +104,100 @@ router.post('/auth', async (req, res) =>{
                 timer: 1500,
                 ruta: 'login_register'
             });
-            
+
         }
-        
-    }catch(err){
+
+    } catch (err) {
         console.log(err);
     }
 });
 //rutas del admin -----------
-router.get('/admin', (req, res)=>{
-    if(req.session.loggedin && req.session.rol === 'admin'){
-        res.render('admin',{
-            login:true,
+router.get('/admin', (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'admin') {
+        res.render('admin', {
+            login: true,
             nombre: req.session.nombre
         });
-    }else{
-        res.render('admin',{
-            login:false,
+    } else {
+        res.render('admin', {
+            login: false,
             name: "Inicia sesion pibe"
         })
     }
 })
-router.get('/admin_usuarios', async (req, res)=>{
-    if(req.session.loggedin && req.session.rol === 'admin'){
-        try{
+router.get('/admin_usuarios', async (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'admin') {
+        try {
             const usuarios = await Usuario.obtenerTodos();
-            res.render('admin_usuarios',{
-                login:true,
+            res.render('admin_usuarios', {
+                login: true,
                 nombre: req.session.nombre,
-                usuarios:usuarios
+                usuarios: usuarios
             });
-        }catch(err){
+        } catch (err) {
             console.log("error al obtener usuarios " + err)
-            res.render('admin_usuarios',{
+            res.render('admin_usuarios', {
                 login: true,
                 nombre: req.session.nombre,
                 usuarios: [] // En caso de error, pasar una lista vacía
             })
 
         }
-        
-    }else{
-        res.render('admin_usuarios',{
-            login:false,
+
+    } else {
+        res.render('admin_usuarios', {
+            login: false,
             name: "Inicia sesion pibe"
         })
     }
 });
-router.get('/admin_reservas', (req, res)=>{
-    if(req.session.loggedin && req.session.rol === 'admin'){
-        res.render('admin_reservas',{
-            login:true,
+router.get('/admin_reservas', (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'admin') {
+        res.render('admin_reservas', {
+            login: true,
             nombre: req.session.nombre
         });
-    }else{
-        res.render('admin_reservas',{
-            login:false,
+    } else {
+        res.render('admin_reservas', {
+            login: false,
             name: "Inicia sesion pibe"
         })
     }
 });
-router.get('/admin_edicion', (req, res)=>{
-    if(req.session.loggedin && req.session.rol === 'admin'){
-        res.render('admin_edicion',{
-            login:true,
-            nombre: req.session.nombre
-        });
-    }else{
-        res.render('admin_edicion',{
-            login:false,
+router.get('/admin_edicion/:id', async (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'admin') {
+        const usuarioId = req.params.id;
+        try {
+            const usuario = await Usuario.obtenerPorId(usuarioId);
+            res.render('admin_edicion', {
+                login: true,
+                usuario: usuario
+            });
+        } catch (err) {
+            console.error('Error al obtener el usuario:', err);
+            res.redirect('/admin_usuarios'); // En caso de error, redireccionar a la página de usuarios
+        }
+    } else {
+        res.render('admin_edicion', {
+            login: false,
             name: "Inicia sesion pibe"
         })
+    }
+});
+//ruta que sirve para recivir los datos de la edicion para enviarlos a la db
+router.post('/guardar_edicion', async (req, res) =>{
+    const usuarioId = req.body.id;
+    const nombre = req.body.nombre;
+    const correo = req.body.correo;
+    const contrasena = req.body.contrasena;
+    const rol = req.body.rol;
+    console.log("este es el rol" + rol)
+    try{
+        await Usuario.actualizar(usuarioId, { correo, contrasena, nombre, rol});
+        res.redirect('/admin_usuarios')
+    }catch(err){
+        console.log(err);
+        res.redirect('/admin_usuarios')
     }
 });
 //rutas del usuario

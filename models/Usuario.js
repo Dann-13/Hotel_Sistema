@@ -48,7 +48,7 @@ class Usuario {
   static async obtenerTodos() {
     const db = new Database();
     await db.connect();
-  
+
     try {
       const sql = 'SELECT * FROM usuarios';
       const result = await db.query(sql);
@@ -60,7 +60,38 @@ class Usuario {
       await db.disconnect();
     }
   }
-  
+  static async obtenerPorId(id) {
+    const db = new Database();
+    await db.connect();
+    try {
+      const sql = `SELECT * FROM usuarios WHERE id_usuario = ${id} `
+      const result = await db.query(sql);
+      console.log(result[0])
+      return result[0];
+    } catch (err) {
+      console.error(`Error al obtener el usuario por ID: ${err}`);
+      throw err;
+    }finally{
+      await db.disconnect();
+    }
+
+  }
+  static async actualizar(id, datosActualizados){
+    const db = new Database();
+    await db.connect();
+    try{
+      const { correo, contrasena, nombre, rol } = datosActualizados;
+      const sql = 'UPDATE usuarios SET correo = ?, contrasena = ?, nombre = ?, rol = ? WHERE id_usuario = ?';
+      const values = [correo, contrasena, nombre, rol, id];
+      await db.query(sql, values);
+      console.log('Usuario actualizado correctamente');
+    }catch (error) {
+      console.error(`Error al actualizar el usuario: ${error}`);
+      throw error;
+    } finally {
+      await db.disconnect();
+    }
+  }
 
 }
 
