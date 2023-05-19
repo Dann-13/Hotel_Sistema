@@ -21,7 +21,7 @@
             <div class="imgClass">
                 <img src="resources/img/Tumaco/logo.png" alt="">
             </div>
-            <a href="#" class="btn__User">Usuarios</a>
+            <a href="admin" class="btn__User">Dashboard</a>   
             <a href="admin_reservas" class="btn__reserva">Reservas</a>
             <a href="logout" class="btn__reserva">Salir</a>
         </div>
@@ -60,7 +60,7 @@
                                         <td><%=usuario.correo%></td>
                                         <td><%=usuario.contrasena%></td>
                                         <td><a href="/admin_edicion/<%= usuario.id_usuario %>" class="btn__edit">Editar</a></td>
-                                        <td><button class="btn__delete">Eliminar</button></td>
+                                        <td><a href="/eliminar_usuario/<%= usuario.id_usuario %>" class="btn__delete">Eliminar</a></td>
                                     </tr>
                                     <% }); %>
                                     <!-- Más filas de datos -->

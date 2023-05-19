@@ -71,23 +71,39 @@ class Usuario {
     } catch (err) {
       console.error(`Error al obtener el usuario por ID: ${err}`);
       throw err;
-    }finally{
+    } finally {
       await db.disconnect();
     }
 
   }
-  static async actualizar(id, datosActualizados){
+  static async actualizar(id, datosActualizados) {
     const db = new Database();
     await db.connect();
-    try{
+    try {
       const { correo, contrasena, nombre, rol } = datosActualizados;
       const sql = 'UPDATE usuarios SET correo = ?, contrasena = ?, nombre = ?, rol = ? WHERE id_usuario = ?';
       const values = [correo, contrasena, nombre, rol, id];
       await db.query(sql, values);
       console.log('Usuario actualizado correctamente');
-    }catch (error) {
+    } catch (error) {
       console.error(`Error al actualizar el usuario: ${error}`);
       throw error;
+    } finally {
+      await db.disconnect();
+    }
+  }
+  static async eliminarPorId(id) {
+    const db = new Database();
+    await db.connect();
+    try {
+      const sql = 'DELETE FROM usuarios WHERE id_usuario = ?';
+      const values = [id];
+      await db.query(sql, values);
+      console.log('Usuario eliminado correctamente');
+
+    } catch (err) {
+      console.error(`Error al eliminar el usuario: ${err}`);
+      console.log(err);
     } finally {
       await db.disconnect();
     }

@@ -111,7 +111,8 @@ router.post('/auth', async (req, res) => {
         console.log(err);
     }
 });
-//rutas del admin -----------
+//----------------rutas del admin -----------
+//ruta del admin
 router.get('/admin', (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         res.render('admin', {
@@ -125,6 +126,7 @@ router.get('/admin', (req, res) => {
         })
     }
 })
+//ruta encargada de cargar la vista admin_ usuario y a su vez conectar a la base de datos y listarlos
 router.get('/admin_usuarios', async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         try {
@@ -164,6 +166,7 @@ router.get('/admin_reservas', (req, res) => {
         })
     }
 });
+//rutas para la funcionalidad de edicion de usuario por su id especiico (admin_edicion y guardad_edicion)
 router.get('/admin_edicion/:id', async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         const usuarioId = req.params.id;
@@ -185,22 +188,38 @@ router.get('/admin_edicion/:id', async (req, res) => {
     }
 });
 //ruta que sirve para recivir los datos de la edicion para enviarlos a la db
-router.post('/guardar_edicion', async (req, res) =>{
+router.post('/guardar_edicion', async (req, res) => {
     const usuarioId = req.body.id;
     const nombre = req.body.nombre;
     const correo = req.body.correo;
     const contrasena = req.body.contrasena;
     const rol = req.body.rol;
     console.log("este es el rol" + rol)
-    try{
-        await Usuario.actualizar(usuarioId, { correo, contrasena, nombre, rol});
+    try {
+        await Usuario.actualizar(usuarioId, { correo, contrasena, nombre, rol });
         res.redirect('/admin_usuarios')
-    }catch(err){
+    } catch (err) {
         console.log(err);
         res.redirect('/admin_usuarios')
     }
 });
-//rutas del usuario
+//ruta que elimina a un usuario o admin de la base de datos
+router.get('/eliminar_usuario/:id', async (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'admin') {
+        const usuarioId = req.params.id;
+        try {
+            await Usuario.eliminarPorId(usuarioId);
+            res.redirect('/admin_usuarios')
+        } catch (err) {
+            console.error('Error al eliminar el usuario:', err);
+            res.redirect('/admin_usuarios')
+
+        }
+    } else {
+        res.redirect('/admin_usuarios');
+    }
+})
+//--------------rutas del usuario-----------
 //Método para controlar que está auth en todas las páginas
 router.get('/reserva', (req, res) => {
     if (req.session.loggedin) {
