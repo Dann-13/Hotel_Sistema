@@ -242,8 +242,30 @@ router.get('/logout', function (req, res) {
         res.redirect('/') // siempre se ejecutará después de que se destruya la sesión
     })
 });
-router.get('/listado_reserva', (req, res) => {
-    res.render("listado_reserva")
+router.get('/listado_reserva', async (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'user') {
+        try {
+            const listado_reserva = await Listado_reserva.obtenerTodos();
+            res.render('listado_reserva', {
+                login: true,
+                nombre: req.session.nombre,
+                listado_reserva: listado_reserva
+            });
+        } catch (err) {
+            console.log("error al obtener usuarios " + err)
+            res.render('listado_reserva', {
+                login: true,
+                nombre: req.session.nombre,
+                listado_reserva: [] // En caso de error, pasar una lista vacía
+            })
+        }
+
+    } else {
+        res.render('admin_usuarios', {
+            login: false,
+            name: "Inicia sesion pibe"
+        })
+    }
 })
 
 module.exports = router;
