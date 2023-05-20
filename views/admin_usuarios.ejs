@@ -21,7 +21,7 @@
             <div class="imgClass">
                 <img src="resources/img/Tumaco/logo.png" alt="">
             </div>
-            <a href="admin" class="btn__User">Dashboard</a>   
+            <a href="admin" class="btn__User">Dashboard</a>
             <a href="admin_reservas" class="btn__reserva">Reservas</a>
             <a href="logout" class="btn__reserva">Salir</a>
         </div>
@@ -56,17 +56,59 @@
                             <tbody>
                                 <% usuarios.forEach(usuario=> { %>
                                     <tr>
-                                        <td><%= usuario.nombre %></td>
-                                        <td><%=usuario.correo%></td>
-                                        <td><%=usuario.contrasena%></td>
-                                        <td><a href="/admin_edicion/<%= usuario.id_usuario %>" class="btn__edit">Editar</a></td>
-                                        <td><a href="/eliminar_usuario/<%= usuario.id_usuario %>" class="btn__delete">Eliminar</a></td>
+                                        <td>
+                                            <%= usuario.nombre %>
+                                        </td>
+                                        <td>
+                                            <%=usuario.correo%>
+                                        </td>
+                                        <td>
+                                            <%=usuario.contrasena%>
+                                        </td>
+                                        <td><a href="/admin_edicion/<%= usuario.id_usuario %>"
+                                                class="btn__edit">Editar</a></td>
+                                        <td><a href="/eliminar_usuario/<%= usuario.id_usuario %>"
+                                                class="btn__delete">Eliminar</a></td>
                                     </tr>
                                     <% }); %>
-                                    <!-- Más filas de datos -->
+                                        <!-- Más filas de datos -->
                             </tbody>
                         </table>
 
+                    </div>
+                    <div class="table">
+                        <div class="search-container">
+                            <input type="text" placeholder="¿Que desea buscar?" class="search-input">
+                            <button class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                        <% usuarios.forEach(usuario=> { %>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="thead">Nombre</div>
+                                    <div class="tbody">
+                                        <%= usuario.nombre %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="thead">Correo</div>
+                                    <div class="tbody">
+                                        <%= usuario.correo %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="thead">Contraseña</div>
+                                    <div class="tbody">
+                                        <%= usuario.contrasena %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tbody"><a href="/admin_edicion/<%= usuario.id_usuario %>"
+                                            class="btn__edit">Editar</a></div>
+                                    <div class="tbody"><a href="/eliminar_usuario/<%= usuario.id_usuario %>"
+                                        class="btn__delete">Eliminar</a></div>
+                                </div>
+                            </div>
+                            <% }); %>
                     </div>
                 </div>
             </main>

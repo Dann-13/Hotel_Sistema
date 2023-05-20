@@ -249,6 +249,10 @@ body {
     color: black;
     padding: 5px 35px 5px 35px;
 }
+#opciones ul li a{
+    text-decoration: none;
+    color: black;
+}
 
 .fa-user {
     font-size: 40px;
@@ -261,9 +265,6 @@ body {
     justify-content: center;
     padding: 20px 15px 20px 15px;
 
-}
-.container__bienvenida{
-    
 }
 .h1__bienvenida {
     color: black;
