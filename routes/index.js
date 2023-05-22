@@ -69,7 +69,7 @@ router.post('/auth', async (req, res) => {
                 req.session.nombre = result[0].nombre;
                 req.session.correo = result[0].correo;
                 req.session.rol = result[0].rol;
-                req.session.id = result[0].id;
+                req.session.id_usuario = result[0].id_usuario;
                 if (result[0].rol == 'admin') {
                     res.render('login_register', {
                         alert3: true,
@@ -117,6 +117,7 @@ router.post('/auth', async (req, res) => {
 //----------------rutas del admin -----------
 //ruta del admin
 router.get('/admin', (req, res) => {
+    
     if (req.session.loggedin && req.session.rol === 'admin') {
         res.render('admin', {
             login: true,

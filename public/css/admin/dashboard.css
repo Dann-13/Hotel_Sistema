@@ -204,7 +204,8 @@ body {
 }
 
 .container__menu__user {
-    
+    -webkit-box-shadow: 0px 0px 16px -3px #193C59;
+    box-shadow: 0px 0px 16px -3px #193C59;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -222,12 +223,15 @@ body {
     padding: 0 15px 0 15px;
     color: black;
 }
-#boton-opciones{
+
+#boton-opciones {
     background: var(--bg-menu);
 }
-#boton-opciones i{
+
+#boton-opciones i {
     color: white;
 }
+
 #opciones {
     position: absolute;
     top: 60px;
@@ -249,7 +253,8 @@ body {
     color: black;
     padding: 5px 35px 5px 35px;
 }
-#opciones ul li a{
+
+#opciones ul li a {
     text-decoration: none;
     color: black;
 }
@@ -261,11 +266,12 @@ body {
 
 .container__info {
     display: flex;
-    flex-wrap: wrap;
+
     justify-content: center;
     padding: 20px 15px 20px 15px;
 
 }
+
 .h1__bienvenida {
     color: black;
     font-size: 19px;
@@ -275,6 +281,58 @@ body {
 .p__bienvenida {
     color: black;
     font-size: 14px;
+}
+
+.container__social {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Dos columnas con el mismo ancho */
+    grid-template-rows: 1fr 1fr;
+    /* Dos filas con la misma altura */
+    gap: 10px;
+    /* Espacio entre los elementos */
+}
+
+.redes {
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: black;
+    width: 200px;
+}
+.redes img{
+    max-width: 30%;
+    height: auto;
+}
+.redes__face p{
+    color: white;
+}
+.redes__face {
+    display: flex;
+    flex-direction: column;
+    background-color: #3b5998;
+    justify-content: center;
+    align-items: center;
+}
+.redes__tw{
+    display: flex;
+    flex-direction: column;
+    background-color: #00acee;
+    justify-content: center;
+    align-items: center;
+}
+.redes__tw p{
+    color: #fff;
+}
+.redes__git{
+    display: flex;
+    flex-direction: column;
+    background-color: #060606;
+    justify-content: center;
+    align-items: center;
+}
+.redes__git p{
+    color: #fff;
 }
 
 /* pantallas grandes */

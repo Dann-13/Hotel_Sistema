@@ -31,7 +31,6 @@ class Usuario {
       const sql = 'SELECT * FROM usuarios WHERE correo = ?';
       const values = [correo];
       const result = await db.query(sql, values);
-      console.log(result[0]);
       //no esta
       if (result.length == 0 || !(await bcryptjs.compare(contrasena, result[0].contrasena))) {
         return false;
