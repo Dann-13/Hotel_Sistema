@@ -1,22 +1,23 @@
 const Database = require('./database');
-const bcryptjs = require('bcryptjs')
+
 class Listado_reserva {
-  constructor(nombre, tipo, fecha_ent, fecha_sal, precio) {
-    this.nombre = nombre;
-    this.tipo = tipo;
-    this.fecha_ent = fecha_ent;
-    this.fecha_sal = fecha_sal;
-    this.precio = precio;
+  constructor(id_reserva, id_usuario,id_habitacion,  fecha_llegada, fecha_salida, precio_total) {
+    this.id_reserva = id_reserva;
+    this.id_usuario = id_usuario;
+    this.id_habitacion = id_habitacion;
+    this.fecha_llegada = fecha_llegada;
+    this.fecha_salida = fecha_salida;
+    this.precio_total = precio_total;
   }
 
-  static async obtenerTodos() {
+  static async obtenerTodosHabitacion() {
     const db = new Database();
     await db.connect();
+
     try {
-      const sql_l = 'SELECT * FROM habitaciones';
-      const result_l = await db.query(sql_l);
-      return result_l;
-      retur
+      const sql = 'SELECT * FROM reservas';
+      const result = await db.query(sql);
+      return result;
     } catch (error) {
       console.error(`Error al obtener los usuarios: ${error}`);
       return [];
@@ -25,3 +26,5 @@ class Listado_reserva {
     }
   }
 }
+
+module.exports = Listado_reserva;

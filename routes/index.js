@@ -3,6 +3,7 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const Usuario = require('../models/Usuario');
 
+
 // variables de session
 const session = require('express-session');
 router.use(session({
@@ -245,23 +246,26 @@ router.get('/logout', function (req, res) {
 router.get('/listado_reserva', async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'user') {
         try {
-            const listado_reserva = await Listado_reserva.obtenerTodos();
+            const listado_reserva = await Listado_reserva.obtenerTodosHabitacion();
+            const usuarios = await Usuario.obtenerTodos();
             res.render('listado_reserva', {
                 login: true,
                 nombre: req.session.nombre,
-                listado_reserva: listado_reserva
+                listado_reserva: listado_reserva,
+                usuarios: usuarios
             });
         } catch (err) {
             console.log("error al obtener usuarios " + err)
             res.render('listado_reserva', {
                 login: true,
                 nombre: req.session.nombre,
-                listado_reserva: [] // En caso de error, pasar una lista vacía
+                usuarios: [] // En caso de error, pasar una lista vacía
             })
+
         }
 
     } else {
-        res.render('admin_usuarios', {
+        res.render('listado_reserva', {
             login: false,
             name: "Inicia sesion pibe"
         })

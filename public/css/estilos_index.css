@@ -385,3 +385,14 @@ footer {
     background-color: #f2f2f2;
     font-size: 18px;
 }
+
+.readMode_btn{
+    background-color: #25d366;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    padding: 15px 32px;
+    font-size: 1.2cm;
+    box-shadow: 0px 0px 10px 0px rebeccapurple;
+    cursor: pointer;
+}
