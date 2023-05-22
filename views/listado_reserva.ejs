@@ -46,15 +46,8 @@
             <div class="tabla">
               <table>
                 <thead>
-                  <form action="" class="buscador" id="form" style="padding: 15px;">
-                    <div class="search-container">
-                      <input type="text" placeholder="¿Que desea buscar?" class="search-input">
-                      <button class="search-button"><i class="fa fa-search"></i></button>
-                    </div>
-                  </form>
                   <caption style="padding: 30px 0">Lista de Usuarios Registrados</caption>
                   <tr>
-                    <th>ID</th>
                     <th>id_reserva </th>
                     <th>id_usuario</th>
                     <th>id_habitacion</th>
@@ -85,8 +78,7 @@
                       <td>
                         <%=listado_reserva.precio_total%>
                       </td>
-                      <td><a href="/admin_edicion/<%= usuario.id_usuario %>" class="btn__edit">Editar</a></td>
-                      <td><a href="/eliminar_usuario/<%= usuario.id_usuario %>" class="btn__delete">Eliminar</a></td>
+                      
                     </tr>
                     <% }); %>
                       <!-- Más filas de datos -->
@@ -94,53 +86,6 @@
               </table>
     
             </div>
-            <div class="table">
-              <div class="search-container">
-                <input type="text" placeholder="¿Que desea buscar?" class="search-input">
-                <button class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-              </div>
-              <% listado_reserva.forEach(listado_reserva=> { %>
-                <div class="item">
-                  <div class="row">
-                    <div class="thead">Nombre</div>
-                    <div class="tbody">
-                      <%= usuarios.nombre %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="thead">Tipo</div>
-                    <div class="tbody">
-                      <%= listado_reserva.tipo %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="thead">Fecha entrada</div>
-                    <div class="tbody">
-                      <%= listado_reserva.fecha_ent%>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="thead">Fecha salida</div>
-                    <div class="tbody">
-                      <%= listado_reserva.fecha_sal%>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="thead">Precio</div>
-                    <div class="tbody">
-                      <%= listado_reserva.precio%>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="tbody"><a href="/admin_edicion/<%= usuario.id_usuario %>" class="btn__edit">Editar</a>
-                    </div>
-                    <div class="tbody"><a href="/eliminar_usuario/<%= usuario.id_usuario %>"
-                        class="btn__delete">Eliminar</a></div>
-                  </div>
-                </div>
-                <% }); %>
-            </div>
-          </div>
         </main>
     
     
@@ -153,60 +98,6 @@
           <a href="login_register" class="a-login">Ir a Login</a>
           <% } %>
     </div>
-
-
-    <div class="col">
-      <table class="table">
-        <table>
-          <caption>Reservas</caption>
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nombre </th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Fecha entrada</th>
-              <th scope="col">Fecha salida</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Editar</th>
-              <th scope="col">Borrar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Estandar</td>
-              <td>05/10/2023</td>
-              <td>08/10/2023</td>
-              <td>280.000</td>
-              <td><button class="btn__edit">Editar</button></td>
-              <td><button class="btn__delete">Borrar</button></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Suite</td>
-              <td>18/01/2023</td>
-              <td>25/01/2023</td>
-              <td>670.000</td>
-              <td><button class="btn__edit">Editar</button></td>
-              <td><button class="btn__delete">borrar</button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>Estandar plus</td>
-              <td>15/12/2023</td>
-              <td>20/12/2023</td>
-              <td>400.000</td>
-              <td><button class="btn__edit">Editar</button></td>
-              <td><button class="btn__delete">borrar</button></td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-  </div>
-  </div>
 
   <footer>
     <div class="contenido__footer">

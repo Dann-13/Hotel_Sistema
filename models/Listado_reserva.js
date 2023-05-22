@@ -10,7 +10,7 @@ class Listado_reserva {
     this.precio_total = precio_total;
   }
 
-  static async obtenerTodosHabitacion() {
+  static async obtenerTodosReservas() {
     const db = new Database();
     await db.connect();
 
@@ -21,6 +21,23 @@ class Listado_reserva {
     } catch (error) {
       console.error(`Error al obtener los usuarios: ${error}`);
       return [];
+    } finally {
+      await db.disconnect();
+    }
+  }
+
+  static async obtenerPorId(id) {
+    const db = new Database();
+    await db.connect();
+    try {
+      console.log(id);
+      const sql = `SELECT * FROM reservas WHERE id_usuario = ${id} `
+      const result = await db.query(sql);
+      console.log(result[0])
+      return result[0];
+    } catch (err) {
+      console.error(`Error al obtener el usuario por ID: ${err}`);
+      throw err;
     } finally {
       await db.disconnect();
     }

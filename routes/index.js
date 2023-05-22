@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const Usuario = require('../models/Usuario');
+const Listado_reserva = require('../models/Listado_reserva');
 
 
 // variables de session
@@ -68,6 +69,7 @@ router.post('/auth', async (req, res) => {
                 req.session.nombre = result[0].nombre;
                 req.session.correo = result[0].correo;
                 req.session.rol = result[0].rol;
+                req.session.id = result[0].id;
                 if (result[0].rol == 'admin') {
                     res.render('login_register', {
                         alert3: true,
@@ -244,9 +246,10 @@ router.get('/logout', function (req, res) {
     })
 });
 router.get('/listado_reserva', async (req, res) => {
+    console.log(req.session.id);
     if (req.session.loggedin && req.session.rol === 'user') {
         try {
-            const listado_reserva = await Listado_reserva.obtenerTodosHabitacion();
+            const listado_reserva = await Listado_reserva.obtenerPorId(req.session.id);
             const usuarios = await Usuario.obtenerTodos();
             res.render('listado_reserva', {
                 login: true,
