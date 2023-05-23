@@ -283,9 +283,10 @@ router.get('/user_eliminar', (req, res) => {
 
 router.get('/user_edicion/:id', async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'user') {
-        const id_usuario = req.params.id;
+        const id = req.params.id;
         try {
-            const listado = await Listado_reserva.obtenerPorId(id_usuario);
+            const listado = await Listado_reserva.obtenerPorIdReserva(id);
+            console.log(listado);
             res.render('user_edicion', {
                 login: true,
                 listado: listado

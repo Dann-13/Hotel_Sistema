@@ -29,31 +29,31 @@
                 <form action="/edicion_usuario_reserva" method="POST" class="form" id="update-product-form">
                     <h1 class="title">Editar reservas</h1>
                     <div class="inputContainer">
-                        <input type="text" class="input"  name="id_reserva">
+                        <input type="text" class="input" value="<%= listado[0].id_reserva %>" name="id_reserva">
                         <label for="" class="label">ID</label>
                     </div>
                     <div class="inputContainer">
-                        <input type="text" class="input"  name="id">
+                        <input type="text" class="input"  value="<%= listado[0].id_usuario %>"  name="id">
                         <label for="" class="label">Id_usuario</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"  name="id_habitacion">
+                        <input type="text" class="input"  value="<%= listado[0].id_habitacion %>" name="id_habitacion">
                         <label for="" class="label">Id_habitacion</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"  name="fecha_llegada">
+                        <input type="text" class="input"  value="<%= listado[0].fecha_llegada %>"  name="fecha_llegada">
                         <label for="" class="label">Fecha llegada</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"  name="fecha_salida">
+                        <input type="text" class="input"  value="<%= listado[0].fecha_salida%>"  name="fecha_salida">
                         <label for="" class="label">Fecha salida</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"    name="precio_total">
+                        <input type="text" class="input"   value="<%= listado[0].precio_total %>" name="precio_total">
                         <label for="" class="label">Precio</label>
                     </div>
 

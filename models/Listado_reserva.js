@@ -28,21 +28,37 @@ class Listado_reserva {
     }
   }
 
-  static async obtenerPorId(id) {
-    const db = new Database();
-    await db.connect();
-    try {
-      console.log(id);
-      const sql = `SELECT * FROM reservas WHERE id_usuario = ${id} `
-      const result = await db.query(sql);
-      return result;
-    } catch (err) {
-      console.error(`Error al obtener el usuario por ID: ${err}`);
-      throw err;
-    } finally {
-      await db.disconnect();
-    }
+static async obtenerPorId(id) {
+  const db = new Database();
+  await db.connect();
+  try {
+    console.log(id);
+    const sql = 'SELECT * FROM reservas WHERE id_usuario = ?';
+    const result = await db.query(sql, [id]);
+    return result;
+  } catch (err) {
+    console.error(`Error al obtener el usuario por ID: ${err}`);
+    throw err;
+  } finally {
+    await db.disconnect();
   }
+}
+static async obtenerPorIdReserva(id) {
+  const db = new Database();
+  await db.connect();
+  try {
+    console.log(id);
+    const sql = 'SELECT * FROM reservas WHERE id_reserva = ?';
+    const result = await db.query(sql, [id]);
+    return result;
+  } catch (err) {
+    console.error(`Error al obtener el usuario por ID: ${err}`);
+    throw err;
+  } finally {
+    await db.disconnect();
+  }
+}
+
 
   static async actualizar(id, datosActualizados) {
     const db = new Database();
