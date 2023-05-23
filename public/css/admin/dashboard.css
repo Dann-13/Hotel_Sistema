@@ -30,7 +30,6 @@ body {
 
 .menu-dashboard {
     max-width: 80px;
-    height: 100vh;
     background: var(--bg-menu);
     padding: 10px;
     transition: max-width .3s ease;
@@ -75,6 +74,7 @@ body {
 
 .top-menu .toggle i {
     font-size: 35px;
+    color: white;
 }
 
 /* INPUT BOX */
@@ -126,6 +126,7 @@ body {
 .menu .enlace i {
     margin-right: 20px;
     font-size: 25px;
+    color: white;
 }
 
 .menu .enlace a {
@@ -266,7 +267,7 @@ body {
 
 .container__info {
     display: flex;
-
+    flex-direction: column;
     justify-content: center;
     padding: 20px 15px 20px 15px;
 
@@ -285,12 +286,13 @@ body {
 
 .container__social {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* Dos columnas con el mismo ancho */
-    grid-template-rows: 1fr 1fr;
-    /* Dos filas con la misma altura */
+    place-items: center;
+    grid-template-columns: 1fr;
+    /* Una única columna */
+    grid-template-rows: 1fr;
     gap: 10px;
     /* Espacio entre los elementos */
+    padding: 20px 0 20px 0;
 }
 
 .redes {
@@ -300,13 +302,16 @@ body {
     color: black;
     width: 200px;
 }
-.redes img{
+
+.redes img {
     max-width: 30%;
     height: auto;
 }
-.redes__face p{
+
+.redes__face p {
     color: white;
 }
+
 .redes__face {
     display: flex;
     flex-direction: column;
@@ -314,25 +319,41 @@ body {
     justify-content: center;
     align-items: center;
 }
-.redes__tw{
+
+.redes__tw {
     display: flex;
     flex-direction: column;
     background-color: #00acee;
     justify-content: center;
     align-items: center;
 }
-.redes__tw p{
+
+.redes__tw p {
     color: #fff;
 }
-.redes__git{
+
+.redes__git {
     display: flex;
     flex-direction: column;
     background-color: #060606;
     justify-content: center;
     align-items: center;
 }
-.redes__git p{
+
+.redes__git p {
     color: #fff;
+}
+
+.redes__you {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+}
+.container__info__2{
+    padding: 0 20px
 }
 
 /* pantallas grandes */
@@ -359,4 +380,30 @@ body {
     .name__user {
         padding: 0 25px 0 25px;
     }
+    .container__bienvenida{
+        padding: 0 15px;
+    }
+    .container__bienvenida h1{
+        font-size: 20px;
+    }
+
+    .container__info {
+        flex-direction: row;
+    }
+    
+
+    .container__social {
+        grid-template-columns: 1fr 1fr;
+        /* Dos columnas con el mismo ancho */
+        grid-template-rows: 1fr 1fr;
+        /* Dos filas con la misma altura */
+    }
+    .container__info__2 h2{
+        padding-left: 10px;
+        font-size: 20px;
+    }
+    .carousel.slide.w-100 {
+        max-width: 500px; /* Ajusta el ancho máximo según tus necesidades */
+      }
+
 }
