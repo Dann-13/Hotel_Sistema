@@ -58,27 +58,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% listado_reserva.forEach(listado_reserva=> { %>
+                  <% listado.forEach(listado=> { %>
                     <tr>
                       <td>
-                        <%= listado_reserva.id_reserva %>
+                        <%= listado.id_reserva %>
                       </td>
                       <td>
-                        <%=listado_reserva.id_usuario%>
+                        <%=listado.id_usuario%>
                       </td>
                       <td>
-                        <%=listado_reserva.id_habitacion%>
+                        <%=listado.id_habitacion%>
                       </td>
                       <td>
-                        <%=listado_reserva.fecha_llegada%>
+                        <%=listado.fecha_llegada%>
                       </td>
                       <td>
-                        <%=listado_reserva.fecha_salida%>
+                        <%=listado.fecha_salida%>
                       </td>
                       <td>
-                        <%=listado_reserva.precio_total%>
+                        <%=listado.precio_total%>
                       </td>
-                      
+                      <td><a href="user_edicion/<%= listado.id_reserva %>"
+                        class="btn__edit">Editar</a></td>
+                      <td><a href="user_eliminar/<%= listado.id_reserva %>"
+                        class="btn__delete">Eliminar</a>
+                      </td>
                     </tr>
                     <% }); %>
                       <!-- Más filas de datos -->

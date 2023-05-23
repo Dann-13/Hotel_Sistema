@@ -249,15 +249,14 @@ router.get('/logout', function (req, res) {
     })
 });
 router.get('/listado_reserva', async (req, res) => {
-    console.log(req.session.id);
     if (req.session.loggedin && req.session.rol === 'user') {
         try {
-            const listado_reserva = await Listado_reserva.obtenerPorId(req.session.id);
+            const listado_reserva = await Listado_reserva.obtenerPorId(req.session.id_usuario);
             const usuarios = await Usuario.obtenerTodos();
             res.render('listado_reserva', {
                 login: true,
                 nombre: req.session.nombre,
-                listado_reserva: listado_reserva,
+                listado: listado_reserva,
                 usuarios: usuarios
             });
         } catch (err) {
@@ -275,6 +274,63 @@ router.get('/listado_reserva', async (req, res) => {
             login: false,
             name: "Inicia sesion pibe"
         })
+    }
+})
+
+router.get('/user_eliminar', (req, res) => {
+    res.render("user_eliminar")
+})
+
+router.get('/user_edicion/:id', async (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'user') {
+        const id_usuario = req.params.id;
+        try {
+            const listado = await Listado_reserva.obtenerPorId(id_usuario);
+            res.render('user_edicion', {
+                login: true,
+                listado: listado
+            });
+        } catch (err) {
+            console.error('Error al obtener el usuario:', err);
+            res.redirect('/listado_reserva'); // En caso de error, redireccionar a la página de usuarios
+        }
+    } else {
+        res.render('listado_reserva', {
+            login: false,
+            name: "Inicia sesion pibe"
+        })
+    }
+});
+
+router.post('/edicion_usuario_reserva', async (req, res) => {
+    const id_reserva = req.body.id_reserva;
+    const id_usuario = req.body.id;
+    const id_habitacion = req.body.id_habitacion;
+    const fecha_llegada = req.body.fecha_llegada;
+    const fecha_salida = req.body.fecha_salida;
+    const precio_total = req.body.precio_total;
+    try {
+        await Listado_reserva.actualizar(id_usuario, { id_reserva, id_habitacion, fecha_llegada, fecha_salida,precio_total });
+        res.redirect('/listado_reserva')
+    } catch (err) {
+        console.log(err);
+        res.redirect('/listado_reserva')
+    }
+});
+
+router.get('/eliminar_usuario_reserva/:id', async (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'user') {
+        const id_usuario = req.params.id;
+        try {
+            await Usuario.eliminarPorId(id_usuario);
+            res.redirect('/listado_reserva')
+        } catch (err) {
+            console.error('Error al eliminar el usuario:', err);
+            res.redirect('/listado_reserva')
+
+        }
+    } else {
+        res.redirect('/listado_reserva');
     }
 })
 

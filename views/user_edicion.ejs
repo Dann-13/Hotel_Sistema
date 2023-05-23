@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/admin/admin.css">
+    <link rel="stylesheet" href="/resources/css/admin/editar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
+
+    <title>Editar Producto</title>
+</head>
+
+<body>
+    <header>
+        <div class="encabezado">
+            <div class="imgClass">
+                <img src="/resources/img/Tumaco/logo.png" alt="">
+            </div>
+            <a href="listado_reserva" class="btn__reserva">Volver</a>
+            <a href="logout" class="btn__reserva">Salir</a>
+        </div>
+    </header>
+    <main class="container">
+        <section class="card cadastro">
+            <div class="signupFrm">
+                <form action="/edicion_usuario_reserva" method="POST" class="form" id="update-product-form">
+                    <h1 class="title">Editar reservas</h1>
+                    <div class="inputContainer">
+                        <input type="text" class="input"  name="id_reserva">
+                        <label for="" class="label">ID</label>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" class="input"  name="id">
+                        <label for="" class="label">Id_usuario</label>
+                    </div>
+
+                    <div class="inputContainer">
+                        <input type="text" class="input"  name="id_habitacion">
+                        <label for="" class="label">Id_habitacion</label>
+                    </div>
+
+                    <div class="inputContainer">
+                        <input type="text" class="input"  name="fecha_llegada">
+                        <label for="" class="label">Fecha llegada</label>
+                    </div>
+
+                    <div class="inputContainer">
+                        <input type="text" class="input"  name="fecha_salida">
+                        <label for="" class="label">Fecha salida</label>
+                    </div>
+
+                    <div class="inputContainer">
+                        <input type="text" class="input"    name="precio_total">
+                        <label for="" class="label">Precio</label>
+                    </div>
+
+                    <div class="inputContainerButton">
+                        <input type="submit" class="submitBtn" value="Actualizar">
+
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="contenido__footer">
+            <p>Desarrollado por: equipo 1 Aunar xd</p>
+            <div class="redes">
+                <a href="https://github.com/Dann-13/Hotel_Sistema_php"><i class="fa-brands fa-github"></i></a>
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
