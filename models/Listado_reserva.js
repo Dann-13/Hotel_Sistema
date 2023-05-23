@@ -17,7 +17,9 @@ class Listado_reserva {
     try {
       const sql = 'SELECT * FROM reservas';
       const result = await db.query(sql);
+      console.log(result);
       return result;
+      
     } catch (error) {
       console.error(`Error al obtener los usuarios: ${error}`);
       return [];

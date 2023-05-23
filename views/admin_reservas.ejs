@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="../../public/img/Tumaco/logo1-removebg-preview.png" type="image/x-icon">
+    <link rel="shortcut icon" href="resources/img/Tumaco/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="resources/css/admin/usuarios/usuarios.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/admin.css">
+    <link rel="stylesheet" href="resources/css/admin/admin.css">
     <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
 
     <title>Administrador</title>
@@ -17,47 +18,115 @@
     <header>
         <div class="encabezado">
             <div class="imgClass">
-                <img src="../../public/img/Tumaco/logo1-removebg-preview.png" alt="">
+                <img src="resources/img/Tumaco/logo.png" alt="">
             </div>
             <a href="admin_usuarios.php" class="btn__User">Usuarios</a>
             <a href="#" class="btn__reserva">Reservas</a>
-            <a href="../../public/index.php" class="btn__reserva">Salir</a>
+            <a href="logout" class="btn__reserva">Salir</a>
         </div>
     </header>
     <main>
         <h2>Bienvenido! Administrador1</h2>
         <div class="contenido">
             <div class="imgClass">
-                <img src="../../public/img/reserva.svg" alt="" srcset="">
+                <img src="resources/img/reserva.svg" alt="" srcset="">
             </div>
             <div class="tabla">
                 <table>
                     <thead>
                         <form action="" class="buscador" id="form" style="padding: 15px;">
-                            <input type="text" name="buscador" id="buscador" class="inputBuscador" placeholder="¿Que decea buscar?" data-info>
-                            <button type="submit" class="button_buscar" >Buscar</button>
+                            <div class="search-container">
+                                <input type="text" placeholder="¿Que desea buscar?" class="search-input">
+                                <button class="search-button"><i class="fa fa-search"></i></button>
+                            </div>
+
                         </form>
-                        <caption style="padding: 30px 0">Lista de Reservas Registradas</caption>
+                        <caption style="padding: 30px 0">Lista de Usuarios Registrados</caption>
                         <tr>
-                            <th>Nombre</th>
-                            <th>fecha</th>
-                            <th>Habitacion</th>
-                            <th>Precio</th>
+                            <th>ID reserva</th>
+                            <th>ID Usuaeio</th>
+                            <th>ID Habitacion</th>
+                            <th>Fecha de LLegada</th>
+                            <th>Fecha de Salida</th>
+                            <th>Precio Total</th>
                             <th colspan="2">Opciones</th> <!-- Columna unida que contiene dos columnas más -->
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>23/12/2023</td>
-                            <td>$30.000</td>
-                            <td><a href="../views/admin_edicion.php"><button class="btn__edit">Editar</button></a></td>
-                            <td><button class="btn__delete">Eliminar</button></td>
-                        </tr>
-                        <!-- Más filas de datos -->
+                        <% reservas.forEach(reserva=> { %>
+                            <tr>
+                                <td>
+                                    <%= reserva.id_reserva %>
+                                </td>
+                                <td>
+                                    <%=reserva.id_usuario%>
+                                </td>
+                                <td>
+                                    <%=reserva.id_habitacion%>
+                                </td>
+                                <td>
+                                    <%=reserva.fecha_llegada %>
+                                </td>
+                                <td>
+                                    <%=reserva.fecha_salida%>
+                                </td>
+                                <td>
+                                    <%=reserva.precio_total%>
+                                </td>
+                                
+                            </tr>
+                            <% }); %>
+                                <!-- Más filas de datos -->
                     </tbody>
                 </table>
 
+            </div>
+            <div class="table">
+                <div class="search-container">
+                    <input type="text" placeholder="¿Que desea buscar?" class="search-input">
+                    <button class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+                <% reservas.forEach(reserva=> { %>
+                    <div class="item">
+                        <div class="row">
+                            <div class="thead">ID Reserva</div>
+                            <div class="tbody">
+                                <%= reserva.id_reserva %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="thead">ID usuario</div>
+                            <div class="tbody">
+                                <%= reserva.id_usuario %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="thead">ID Habitacion</div>
+                            <div class="tbody">
+                                <%= reserva.id_habitacion %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="thead">Fecha LLegada</div>
+                            <div class="tbody">
+                                <%= reserva.fecha_llegada %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="thead">Fecha Salida</div>
+                            <div class="tbody">
+                                <%= reserva.fecha_salida %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="thead">Precio Total</div>
+                            <div class="tbody">
+                                <%= reserva.precio_total %>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <% }); %>
             </div>
         </div>
     </main>

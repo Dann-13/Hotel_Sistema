@@ -157,11 +157,13 @@ router.get('/admin_usuarios', async (req, res) => {
         })
     }
 });
-router.get('/admin_reservas', (req, res) => {
+router.get('/admin_reservas', async(req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
+        const reservas = await Listado_reserva.obtenerTodosReservas();
         res.render('admin_reservas', {
             login: true,
-            nombre: req.session.nombre
+            nombre: req.session.nombre,
+            reservas: reservas
         });
     } else {
         res.render('admin_reservas', {
