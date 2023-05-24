@@ -73,6 +73,7 @@
                                 <td>
                                     <%=reserva.precio_total%>
                                 </td>
+                                <td><a href="/admin_edicionReservas/<%= reserva.id_reserva %>" class="btn__edit">Editar</a></td>
                                 
                             </tr>
                             <% }); %>
@@ -124,7 +125,7 @@
                                 <%= reserva.precio_total %>
                             </div>
                         </div>
-                        
+
                     </div>
                     <% }); %>
             </div>
