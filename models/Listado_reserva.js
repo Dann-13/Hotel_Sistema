@@ -93,6 +93,22 @@ static async obtenerPorIdReserva(id) {
       await db.disconnect();
     }
   }
+  static async eliminarPorIdReserva(id) {
+    const db = new Database();
+    await db.connect();
+    try {
+      const sql = 'DELETE FROM reservas WHERE id_reserva = ?';
+      const values = [id];
+      await db.query(sql, values);
+      console.log('Usuario eliminado correctamente');
+
+    } catch (err) {
+      console.error(`Error al eliminar el usuario: ${err}`);
+      console.log(err);
+    } finally {
+      await db.disconnect();
+    }
+  }
 
   static async eliminarPorId(id) {
     const db = new Database();

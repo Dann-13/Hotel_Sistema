@@ -73,8 +73,11 @@
                                 <td>
                                     <%=reserva.precio_total%>
                                 </td>
-                                <td><a href="/admin_edicionReservas/<%= reserva.id_reserva %>" class="btn__edit">Editar</a></td>
-                                
+                                <td><a href="/admin_edicionReservas/<%= reserva.id_reserva %>"
+                                        class="btn__edit">Editar</a></td>
+                                <td><a href="/eliminar_usuario_reserva/<%= reserva.id_reserva %>"
+                                        class="btn__delete">Eliminar</a></td>
+
                             </tr>
                             <% }); %>
                                 <!-- Más filas de datos -->

@@ -171,6 +171,21 @@ const actualizarReserva = async(req, res) => {
         res.redirect('/admin_reservas')
     }
 }
+const eliminarReserva = async(req, res)=>{
+    if (req.session.loggedin && req.session.rol === 'admin') {
+        const reservaId = req.params.id;
+        try {
+            await Listado_reserva.eliminarPorIdReserva(reservaId);
+            res.redirect('/admin_reservas')
+        } catch (err) {
+            console.error('Error al eliminar el usuario:', err);
+            res.redirect('/admin_reservas')
+
+        }
+    } else {
+        res.redirect('/admin_reservas');
+    }
+}
 
 
 
@@ -182,5 +197,6 @@ module.exports = {
     mostrarAdminEdicionUsuario,
     mostrarAdminReservasSistema,
     mostrarAdminEdicionReservas,
-    actualizarReserva
+    actualizarReserva,
+    eliminarReserva
 }

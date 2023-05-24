@@ -44,7 +44,9 @@ router.get('/eliminar_usuario/:id', adminController.eliminarUsuario);
 //ruta para mostar la vista de edicion reserva 
 router.get('/admin_edicionReservas/:id', adminController.mostrarAdminEdicionReservas);
 //ruta que recive los datos 
-router.post('/guardar_edicionReserva', adminController.actualizarReserva)
+router.post('/guardar_edicionReserva', adminController.actualizarReserva);
+//eliminar reserva por id de reserva
+router.get('/eliminar_usuario_reserva/:id', adminController.eliminarReserva);
 //--------------rutas del usuario-----------
 //Método para controlar que está auth en todas las páginas
 router.get('/reserva', (req, res) => {
