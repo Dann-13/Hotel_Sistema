@@ -48,20 +48,41 @@
                 src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29uYXxlbnwwfHwwfHw%3D&w=1000&q=80"
                 width="100" height="100">
               <div>
-                <label for="" style="margin-top: 20px;">Mark Suqenver</label>
-                <select class="form-select" aria-label="Default select example"
-                  style="margin-top: 20px; width: 400px;margin-left: auto; margin-right: auto;">
-                  <option selected>Tipo de reserva</option>
-                  <option value="1">Estandar</option>
-                  <option value="2">Estandar plus</option>
-                  <option value="3">Suite</option>
-                </select>
+                <label for="" style="margin-top: 20px;">
+                  <%= nombre %>r
+                </label>
+                <form action="/registrar_reserva" method="POST">
+                  <select class="form-select" aria-label="Default select example"
+                    style="margin-top: 20px; width: 400px;margin-left: auto; margin-right: auto;" name="id_habitacion">
+                    <option selected>Tipo de reserva</option>
+                    <option value="1">
+                      <%= habitacion[0].tipo %>
+                    </option>
+                    <option value="2">
+                      <%= habitacion[1].tipo %>
+                    </option>
+                    <option value="3">
+                      <%= habitacion[2].tipo %>
+                    </option>
+                  </select>
+                  <div class="inputContainer">
+                    <input type="text" class="input" id="habitacion_seleccionada" value="<%= id_usuario %>"
+                      name="id_user" disabled>
+                    <label for="" class="label">id usuario ID</label>
+                  </div>
               </div>
             </div>
             <div class="col" style="margin-top: 20px;">
-              <p>Fecha inicio: <input type="text" id="datepicker">
-              <p>Fecha salida: <input type="text" id="datepicker">
+              <div class="inputContainer">
+                <input type="text" class="input" id="fecha_llegada" name="fecha_llegada">
+                <label for="" class="label">Fecha de llegada</label>
+              </div>
             </div>
+            <div class="inputContainer">
+              <input type="text" class="input" id="fecha_salida" name="fecha_salida">
+              <label for="" class="label">Fecha de Salida</label>
+            </div>
+
           </div>
           <div>
             <p>280.000</p>
@@ -69,6 +90,7 @@
           <div><button
               style="margin-top: 10px; background-color: #776cd4; color:white; border-radius: 10px; ">Confirmar</button>
           </div>
+          </form>
         </div>
 
         <a href="logout" class="a-logout">Cerrar sesión</a>
@@ -76,7 +98,7 @@
         <% } else {%>
           <h1>Inicie sesion</h1>
           <h1><strong>
-            Por favor inicie session
+              Por favor inicie session
             </strong></h1>
           <a href="login" class="a-login">Ir a Login</a>
           <% } %>
@@ -90,5 +112,8 @@
           </div>
         </div>
       </footer>
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script src="/resources/js/admin/calendario.js"></script>
+</body>
 
 </html>

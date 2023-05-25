@@ -4,6 +4,7 @@ const loginRegisterController = require('./controllers/loginRegisterController')
 const adminController = require('./controllers/adminController')
 const Usuario = require('../models/Usuario');
 const Listado_reserva = require('../models/Listado_reserva');
+const Habitacion = require('../models/Habitacion');
 
 
 // variables de session
@@ -49,11 +50,16 @@ router.post('/guardar_edicionReserva', adminController.actualizarReserva);
 router.get('/eliminar_usuario_reserva/:id', adminController.eliminarReserva);
 //--------------rutas del usuario-----------
 //Método para controlar que está auth en todas las páginas
-router.get('/reserva', (req, res) => {
-    if (req.session.loggedin) {
+router.get('/reserva', async (req, res) => {
+    if (req.session.loggedin && req.session.rol == "user") {
+
+        const habitacion = await Habitacion.obtenerTodos();
+
         res.render('reserva', {
             login: true,
-            nombre: req.session.nombre
+            nombre: req.session.nombre,
+            habitacion: habitacion,
+            id_usuario: req.session.id_usuario
         });
     } else {
         res.render('reserva', {
