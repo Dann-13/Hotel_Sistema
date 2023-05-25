@@ -13,6 +13,8 @@ app.use('/resources', express.static(__dirname + '/public'))
 app.set('view engine', 'ejs');
 const path = require('path');
 app.set('views', path.join(__dirname, 'views'));
+
+
 //----rutas
 app.use('/', require('./routes/index'));
 //servidor

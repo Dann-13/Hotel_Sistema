@@ -3,6 +3,7 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const Usuario = require('../../models/Usuario');
 const Listado_reserva = require('../../models/Listado_reserva');
+const Habitaciones = require('../../models/Habitacion');
 
 
 // variables de session
@@ -18,8 +19,8 @@ const Database = require('../../models/database');
 //Inicializamos a base de datos 
 const db = new Database();
 
-const mostrarAdmin = (req, res) =>{
-        
+const mostrarAdmin = (req, res) => {
+
     if (req.session.loggedin && req.session.rol === 'admin') {
         res.render('admin', {
             login: true,
@@ -34,7 +35,7 @@ const mostrarAdmin = (req, res) =>{
 
 }
 //ruta del administrador, lista los usuarios registrados
-const mostrarAdminUsuariosSistema = async(req , res) =>{
+const mostrarAdminUsuariosSistema = async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         try {
             const usuarios = await Usuario.obtenerTodos();
@@ -62,7 +63,7 @@ const mostrarAdminUsuariosSistema = async(req , res) =>{
 }
 
 //Funcion que recive y envia datos para actualizar a un usuario en la base de datos POST
-const actualizarUsuario = async (req, res) =>{
+const actualizarUsuario = async (req, res) => {
     const usuarioId = req.body.id;
     const nombre = req.body.nombre;
     const correo = req.body.correo;
@@ -79,7 +80,7 @@ const actualizarUsuario = async (req, res) =>{
 
 }
 //Funcion que enseña la vista admin edicion para editar a un usuario en especifico GET
-const mostrarAdminEdicionUsuario = async (req, res) =>{
+const mostrarAdminEdicionUsuario = async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         const usuarioId = req.params.id;
         try {
@@ -100,7 +101,7 @@ const mostrarAdminEdicionUsuario = async (req, res) =>{
     }
 
 }
-const eliminarUsuario = async(req, res)=>{
+const eliminarUsuario = async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         const usuarioId = req.params.id;
         try {
@@ -114,14 +115,14 @@ const eliminarUsuario = async(req, res)=>{
     } else {
         res.redirect('/admin_usuarios');
     }
-    
+
 }
 //---------Reservas
 //ruta del administrador, lista las reservas registradas
-const mostrarAdminReservasSistema = async(req, res) =>{
+const mostrarAdminReservasSistema = async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         const reservas = await Listado_reserva.obtenerTodosReservas();
-        
+
         res.render('admin_reservas', {
             login: true,
             nombre: req.session.nombre,
@@ -135,28 +136,32 @@ const mostrarAdminReservasSistema = async(req, res) =>{
     }
 }
 // funcion ruta que mostrara el admin_edicionReservas, metodo GET
-const mostrarAdminEdicionReservas = async(req, res) =>{
-    if (req.session.loggedin && req.session.rol === 'admin'){
+const mostrarAdminEdicionReservas = async (req, res) => {
+    if (req.session.loggedin && req.session.rol === 'admin') {
         const id_reserva = req.params.id;
         try {
             const reserva = await Listado_reserva.obtenerPorIdReserva(id_reserva);
+            const habitaciones = await Habitaciones.obtenerTodos();
+
             res.render('admin_edicionReservas', {
                 login: true,
-                reserva: reserva
+                reserva: reserva,
+                habitaciones:habitaciones,
+                
             });
         } catch (err) {
             console.error('Error al obtener la reserva:', err);
             res.redirect('/admin_reservas'); // En caso de error, redireccionar a la página de usuarios
         }
-    }else{
-        res.render('admin_reservas',{
-            login:false,
+    } else {
+        res.render('admin_reservas', {
+            login: false,
             name: 'inicia sesion pibe'
         })
     }
 }
 //funcion que recibe datos del ejs y posteriormente los envia a la base de datos, Metodo Post
-const actualizarReserva = async(req, res) => { 
+const actualizarReserva = async (req, res) => {
     const reservaId = req.body.id;
     const usuario = req.body.usuario;
     const habitacion = req.body.habitacion;
@@ -164,14 +169,14 @@ const actualizarReserva = async(req, res) => {
     const fecha_salida = req.body.fecha_salida;
     const precio_total = req.body.precio_total;
     try {
-        await Listado_reserva.actualizarPorIdReserva(reservaId, { usuario, habitacion, fecha_llegada, fecha_salida, precio_total});
+        await Listado_reserva.actualizarPorIdReserva(reservaId, { usuario, habitacion, fecha_llegada, fecha_salida, precio_total });
         res.redirect('/admin_reservas')
     } catch (err) {
         console.log(err);
         res.redirect('/admin_reservas')
     }
 }
-const eliminarReserva = async(req, res)=>{
+const eliminarReserva = async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'admin') {
         const reservaId = req.params.id;
         try {
@@ -186,8 +191,13 @@ const eliminarReserva = async(req, res)=>{
         res.redirect('/admin_reservas');
     }
 }
+const habitaciones = async () => {
+    const habitacion = await Habitaciones.obtenerTodos();
+    console.log(habitacion);
+    return habitacion;
+}
 
-
+  
 
 module.exports = {
     mostrarAdmin,
@@ -198,5 +208,6 @@ module.exports = {
     mostrarAdminReservasSistema,
     mostrarAdminEdicionReservas,
     actualizarReserva,
-    eliminarReserva
+    eliminarReserva,
+    habitaciones
 }

@@ -352,7 +352,8 @@ body {
     align-items: center;
     height: 95%;
 }
-.container__info__2{
+
+.container__info__2 {
     padding: 0 20px
 }
 
@@ -380,17 +381,25 @@ body {
     .name__user {
         padding: 0 25px 0 25px;
     }
-    .container__bienvenida{
-        padding: 0 15px;
+
+    .container__bienvenida {
+        margin: 0 15px;
+        padding: 15px;
+        -webkit-box-shadow: 1px 3px 17px -5px rgba(0, 48, 83, 1);
+        -moz-box-shadow: 1px 3px 17px -5px rgba(0, 48, 83, 1);
+        box-shadow: 1px 3px 17px -5px rgba(0, 48, 83, 1);
+
     }
-    .container__bienvenida h1{
+
+    .container__bienvenida h1 {
         font-size: 20px;
+        text-align: center;
     }
 
     .container__info {
         flex-direction: row;
     }
-    
+
 
     .container__social {
         grid-template-columns: 1fr 1fr;
@@ -398,12 +407,15 @@ body {
         grid-template-rows: 1fr 1fr;
         /* Dos filas con la misma altura */
     }
-    .container__info__2 h2{
+
+    .container__info__2 h2 {
         padding-left: 10px;
         font-size: 20px;
     }
+
     .carousel.slide.w-100 {
-        max-width: 500px; /* Ajusta el ancho máximo según tus necesidades */
-      }
+        max-width: 500px;
+        /* Ajusta el ancho máximo según tus necesidades */
+    }
 
 }
