@@ -11,3 +11,14 @@ flatpickr("#fecha_llegada", {
 flatpickr("#fecha_salida", {
     dateFormat: "Y-m-d",  // Formato de la fecha a enviar al servidor
 });
+
+flatpickr('#fecha_llegadaUser',{
+    dateFormat: "Y-m-d",
+    minDate: new Date().fp_incr(0),
+    maxDate: new Date().fp_incr(7),
+})
+flatpickr("#fecha_salidaUser", {
+    dateFormat: "Y-m-d",  // Formato de la fecha a enviar al servidor
+    minDate: new Date().fp_incr(2),
+    maxDate: new Date().fp_incr(30),
+});
