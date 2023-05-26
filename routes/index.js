@@ -277,10 +277,6 @@ router.get('/listado_reserva', async (req, res) => {
     }
 })
 
-router.get('/user_eliminar', (req, res) => {
-    res.render("user_eliminar")
-})
-
 router.get('/user_edicion/:id', async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'user') {
         const id_usuario = req.params.id;
@@ -322,7 +318,7 @@ router.get('/eliminar_usuario_reserva/:id', async (req, res) => {
     if (req.session.loggedin && req.session.rol === 'user') {
         const id_usuario = req.params.id;
         try {
-            await Usuario.eliminarPorId(id_usuario);
+            await Listado_reserva.eliminarPorId(id_usuario);
             res.redirect('/listado_reserva')
         } catch (err) {
             console.error('Error al eliminar el usuario:', err);
