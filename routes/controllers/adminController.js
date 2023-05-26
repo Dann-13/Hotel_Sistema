@@ -162,12 +162,13 @@ const mostrarAdminEdicionReservas = async (req, res) => {
 }
 //funcion que recibe datos del ejs y posteriormente los envia a la base de datos, Metodo Post
 const actualizarReserva = async (req, res) => {
-    const reservaId = req.body.id;
-    const usuario = req.body.usuario;
-    const habitacion = req.body.habitacion;
-    const fecha_llegada = req.body.fecha_llegada;
-    const fecha_salida = req.body.fecha_salida;
-    const precio_total = req.body.precio_total;
+    const reservaId = parseInt(req.body.id,10);
+    const usuario = parseInt(req.body.usuario,10);
+    const habitacion = parseInt(req.body.habitacion,10);
+    const fecha_llegada = new Date(req.body.fecha_llegada);
+    const fecha_salida = new Date(req.body.fecha_salida);
+    const precio_total = parseFloat(req.body.precio_total);
+    
     try {
         await Listado_reserva.actualizarPorIdReserva(reservaId, { usuario, habitacion, fecha_llegada, fecha_salida, precio_total });
         res.redirect('/admin_reservas')
