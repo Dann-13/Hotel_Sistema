@@ -37,7 +37,8 @@
         </strong></h1>
       <form action="" method="post">
         <select class="form-select" aria-label="Default select example"
-          style="margin-top: 20px; width: 400px;margin-left: auto; margin-right: auto;" name="id_habitacion">
+          style="margin-top: 20px; width: 400px;margin-left: auto; margin-right: auto;" name="id_habitacion"
+          id="habitacion_seleccionada">
           <option selected>Tipo de reserva</option>
           <option value="1">
             <%= habitacion[0].tipo %>
@@ -50,8 +51,7 @@
           </option>
         </select>
         <div class="inputContainer">
-          <input type="text" class="input" id="habitacion_seleccionada" value="<%= id_usuario %>" name="id_user"
-            disabled>
+          <input type="text" class="input" id="id_usuario" value="<%= id_usuario %>" name="id_user" disabled>
           <label for="" class="label">id usuario ID</label>
         </div>
 
@@ -67,6 +67,10 @@
         </div>
         <div class="inputContainerButton">
           <input type="submit" class="submitBtn" value="Actualizar">
+        </div>
+        <div class="inputContainer">
+          <input type="text" class="input" id="precio_total"  name="precio_total">
+          <label for="" class="label">Precio Total</label>
         </div>
       </form>
     </div>
@@ -92,6 +96,55 @@
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="/resources/js/admin/calendario.js"></script>
+        <script>
+
+          const fechaLlegadaInput = document.getElementById("fecha_llegadaUser");
+          const fechaSalidaInput = document.getElementById("fecha_salidaUser");
+          const habitacion_seleccionada = document.getElementById('habitacion_seleccionada');
+          const precioTotalInput = document.getElementById('precio_total');
+
+
+          fechaLlegadaInput.addEventListener("change", function () {
+            valor();
+          });
+
+          fechaSalidaInput.addEventListener("change", function () {
+            valor();
+          });
+
+          habitacion_seleccionada.addEventListener('change', function () {
+            valor();
+          })
+          // Ejemplo de uso de las fechas fuera de las funciones
+          function valor() {
+            const fechaLlegada = fechaLlegadaInput.value;
+            const fechaSalida = fechaSalidaInput.value;
+            const id_habitacionInput = habitacion_seleccionada.value;
+            console.log(id_habitacionInput);
+            const fechaLlegadatransformada = new Date(fechaLlegada);
+            const fechaSalidatransformada = new Date(fechaSalida);
+            const diferenciaTiempo = fechaSalidatransformada.getTime() - fechaLlegadatransformada.getTime();
+            const dias = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
+
+            console.log("Diferencia en días:", dias);
+            // Obtén las habitaciones directamente en el archivo EJS
+            const habitaciones = JSON.parse('<%- JSON.stringify(habitacion) %>');
+            console.log(habitaciones);
+
+            const habitacionEncontrada = habitaciones.find(habitacion => habitacion.id_habitacion == id_habitacionInput);
+
+
+            if (habitacionEncontrada) {
+              const precioNoche = habitacionEncontrada.precio_noche;
+              precioTotal = precioNoche * dias;
+              precioTotalInput.value = precioTotal;
+              console.log(precioTotal);
+            } else {
+              console.log("No se encontró la habitación con ID", id_habitacionInput);
+            }
+
+          }
+        </script>
 </body>
 
 </html>
