@@ -18,7 +18,7 @@ a {
 }
 
 .imgClass {
-  width: 150px;
+  width: 200px;
   height: auto;
   padding-right: 50px;
 }
@@ -27,12 +27,14 @@ a {
   max-width: 100%;
   height: auto;
 }
+
 .imgClass2 {
   width: 350px;
   height: auto;
   padding-right: 50px;
 }
-.imgClass2 img{
+
+.imgClass2 img {
   width: 350px;
   height: auto;
   padding-right: 50px;
@@ -142,11 +144,15 @@ th {
 .contenido__footer p {
   font-size: 20px;
 }
-.redes{
+
+.redes {
   padding: 15px 0 15px 0
 }
+
 .redes a {
   font-size: 20px;
+  text-decoration: none;
+  color: #000;
 }
 
 .buscador {
@@ -170,10 +176,12 @@ th {
   .encabezado a {
     padding-bottom: 15px;
   }
-  .tabla{
+
+  .tabla {
     display: none;
   }
-  .contenido{
+
+  .contenido {
     flex-direction: column;
     align-items: center;
   }
@@ -181,7 +189,8 @@ th {
   table {
     display: none;
   }
-  .search-container{
+
+  .search-container {
     padding: 15px 0 15px 0;
   }
 
@@ -200,6 +209,7 @@ th {
     align-items: center;
     flex-direction: row;
   }
+
   div.tbody,
   div.thead {
     border: 1px solid #ccc;
