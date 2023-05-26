@@ -248,6 +248,11 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+#opciones ul{
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
 
 #opciones ul li {
     list-style: none;

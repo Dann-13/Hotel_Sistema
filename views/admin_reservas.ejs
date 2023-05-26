@@ -20,27 +20,21 @@
             <div class="imgClass">
                 <img src="resources/img/Tumaco/logo.png" alt="">
             </div>
-            <a href="admin_usuarios.php" class="btn__User">Usuarios</a>
+            <a href="admin_usuarios" class="btn__User">Usuarios</a>
             <a href="#" class="btn__reserva">Reservas</a>
             <a href="logout" class="btn__reserva">Salir</a>
         </div>
     </header>
     <main>
-        <h2>Bienvenido! Administrador1</h2>
+        <h2>Bienvenido! <strong><%= nombre %></strong></h2>
         <div class="contenido">
-            <div class="imgClass">
+            <div class="imgClass2">
                 <img src="resources/img/reserva.svg" alt="" srcset="">
             </div>
             <div class="tabla">
                 <table>
                     <thead>
-                        <form action="" class="buscador" id="form" style="padding: 15px;">
-                            <div class="search-container">
-                                <input type="text" placeholder="¿Que desea buscar?" class="search-input">
-                                <button class="search-button"><i class="fa fa-search"></i></button>
-                            </div>
-
-                        </form>
+                        
                         <caption style="padding: 30px 0">Lista de Usuarios Registrados</caption>
                         <tr>
                             <th>ID reserva</th>

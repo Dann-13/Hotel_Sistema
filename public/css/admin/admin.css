@@ -18,7 +18,7 @@ a {
 }
 
 .imgClass {
-  width: 200px;
+  width: 150px;
   height: auto;
   padding-right: 50px;
 }
@@ -26,6 +26,16 @@ a {
 .imgClass img {
   max-width: 100%;
   height: auto;
+}
+.imgClass2 {
+  width: 350px;
+  height: auto;
+  padding-right: 50px;
+}
+.imgClass2 img{
+  width: 350px;
+  height: auto;
+  padding-right: 50px;
 }
 
 .btn__User {
@@ -60,6 +70,7 @@ main h2 {
   justify-content: space-evenly;
   padding-top: 80px;
   padding-bottom: 80px;
+  align-items: center;
 }
 
 table {
