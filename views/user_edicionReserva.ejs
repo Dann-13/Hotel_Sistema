@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/resources/css/admin/editar.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <title>Editar Producto</title>
 </head>
@@ -20,7 +21,7 @@
                 <img src="/resources/img/Tumaco/logo.png" alt="">
             </div>
             <a href="listado_reserva" class="btn__reserva">Volver</a>
-            <a href="logout" class="btn__reserva">Salir</a>
+            <a href="logout" class="btn__reserva">Cerrar Sesion</a>
         </div>
     </header>
     <main class="container">
@@ -29,31 +30,35 @@
                 <form action="/edicion_usuario_reserva" method="POST" class="form" id="update-product-form">
                     <h1 class="title">Editar reservas</h1>
                     <div class="inputContainer">
-                        <input type="text" class="input" value="<%= listado[0].id_reserva %>" name="id_reserva">
+                        <input type="text" class="input" value="<%= listado[0].id_reserva %>" name="id_reserva" readonly>
                         <label for="" class="label">ID</label>
                     </div>
                     <div class="inputContainer">
-                        <input type="text" class="input"  value="<%= listado[0].id_usuario %>"  name="id">
+                        <input type="text" class="input"  value="<%= listado[0].id_usuario %>"  name="id" readonly>
                         <label for="" class="label">Id_usuario</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"  value="<%= listado[0].id_habitacion %>" name="id_habitacion">
+                        <input type="text" class="input" id="habitacion_seleccionada" value="<%= listado[0].id_habitacion %>" name="id_habitacion">
                         <label for="" class="label">Id_habitacion</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"  value="<%= listado[0].fecha_llegada %>"  name="fecha_llegada">
+                        <input type="text" class="input" id="fecha_llegadaUser" 
+                        value="<%= listado[0].fecha_llegada.getFullYear() + '-' + (listado[0].fecha_llegada.getMonth() + 1) + '-' + listado[0].fecha_llegada.getDate() %>"
+                        name="fecha_llegada">
                         <label for="" class="label">Fecha llegada</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"  value="<%= listado[0].fecha_salida%>"  name="fecha_salida">
+                        <input type="text" class="input" id="fecha_salidaUser" 
+                        value="<%= listado[0].fecha_salida.getFullYear() + '-' + (listado[0].fecha_salida.getMonth() + 1) + '-' + listado[0].fecha_salida.getDate() %>"
+                        name="fecha_salida">
                         <label for="" class="label">Fecha salida</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" class="input"   value="<%= listado[0].precio_total %>" name="precio_total">
+                        <input type="text" class="input"  id="precio_total" value="<%= listado[0].precio_total %>" name="precio_total" readonly>
                         <label for="" class="label">Precio</label>
                     </div>
 
@@ -74,5 +79,56 @@
             </div>
         </div>
     </footer>
+    <script>
+
+        const fechaLlegadaInput = document.getElementById("fecha_llegadaUser");
+        const fechaSalidaInput = document.getElementById("fecha_salidaUser");
+        const habitacion_seleccionada = document.getElementById('habitacion_seleccionada');
+        const precioTotalInput = document.getElementById('precio_total');
+
+
+        fechaLlegadaInput.addEventListener("change", function () {
+            valor();
+        });
+
+        fechaSalidaInput.addEventListener("change", function () {
+            valor();
+        });
+
+        habitacion_seleccionada.addEventListener('change', function () {
+            valor();
+        })
+        // Ejemplo de uso de las fechas fuera de las funciones
+        function valor() {
+            const fechaLlegada = fechaLlegadaInput.value;
+            const fechaSalida = fechaSalidaInput.value;
+            const id_habitacionInput = habitacion_seleccionada.value;
+            console.log(id_habitacionInput);
+            const fechaLlegadatransformada = new Date(fechaLlegada);
+            const fechaSalidatransformada = new Date(fechaSalida);
+            const diferenciaTiempo = fechaSalidatransformada.getTime() - fechaLlegadatransformada.getTime();
+            const dias = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
+
+            console.log("Diferencia en días:", dias);
+            // Obtén las habitaciones directamente en el archivo EJS
+            const habitaciones = JSON.parse('<%- JSON.stringify(habitaciones) %>');
+            console.log(habitaciones);
+
+            const habitacionEncontrada = habitaciones.find(habitacion => habitacion.id_habitacion == id_habitacionInput);
+
+            if (habitacionEncontrada) {
+                const precioNoche = habitacionEncontrada.precio_noche;
+                precioTotal = precioNoche * dias;
+                precioTotalInput.value = precioTotal;
+                console.log(precioTotal);
+            } else {
+                console.log("No se encontró la habitación con ID", id_habitacionInput);
+            }
+
+        }
+        
+    </script>
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+   <script src="/resources/js/admin/calendario.js"></script>
 </body>
 </html>

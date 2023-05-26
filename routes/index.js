@@ -140,10 +140,13 @@ router.get('/user_edicionReserva/:id', async (req, res) => {
         const id = req.params.id;
         try {
             const listado = await Listado_reserva.obtenerPorIdReserva(id);
+            const habitaciones = await Habitacion.obtenerTodos();
+
             console.log(listado);
             res.render('user_edicionReserva', {
                 login: true,
-                listado: listado
+                listado: listado,
+                habitaciones:habitaciones
             });
         } catch (err) {
             console.error('Error al obtener el usuario:', err);
