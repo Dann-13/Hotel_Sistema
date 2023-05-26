@@ -29,14 +29,6 @@
   </header>
 
   <div class="container text-center">
-    <div class="row align-items-start">
-      <div class="container text-center">
-        <img style="margin-top: 20px;"
-          src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29uYXxlbnwwfHwwfHw%3D&w=1000&q=80"
-          width="120" height="120">
-      </div>
-    </div>
-    
     <div class="contenedor">
       <% if (login) {%>
         <main>
@@ -46,7 +38,6 @@
             <div class="tabla">
               <table>
                 <thead>
-                  <caption style="padding: 30px 0">Lista de Usuarios Registrados</caption>
                   <tr>
                     <th>id_reserva </th>
                     <th>id_usuario</th>
@@ -78,10 +69,10 @@
                       <td>
                         <%=listado.precio_total%>
                       </td>
-                      <td><a href="user_edicion/<%= listado.id_usuario %>"
+                      <td><a href="/user_edicionReserva/<%= listado.id_reserva %>"
                         class="btn__edit">Editar</a></td>
-                      <td><a href="/eliminar_usuario_reserva/<%= listado.id_usuario %>"
-                        class="btn__delete">Eliminar</a>
+                      <td>
+                        <a href="/eliminarReservaUsuario/<%= listado.id_reserva %>" class="btn__delete">Eliminar</a>
                       </td>
                     </tr>
                     <% }); %>

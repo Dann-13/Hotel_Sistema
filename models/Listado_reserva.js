@@ -61,21 +61,21 @@ class Listado_reserva {
     const db = new Database();
     await db.connect();
     try {
-      console.log(id);
       const sql = 'SELECT * FROM reservas WHERE id_reserva = ?';
       const result = await db.query(sql, [id]);
-      console.log("reserva " + result[0]);
+      console.log('reservas' + result)
       return result;
     } catch (err) {
-      console.error(`Error al obtener el usuario por ID: ${err}`);
+      console.error(`Error al obtener la reserva por ID: ${err}`);
       throw err;
     } finally {
       await db.disconnect();
     }
   }
+  
 
 
-  static async actualizar(id, datosActualizados) {
+  static async actualizarPorIdUsuario(id, datosActualizados) {
     const db = new Database();
     await db.connect();
     try {
@@ -96,6 +96,7 @@ class Listado_reserva {
     await db.connect();
     try {
       const { id_usuario, id_habitacion, fecha_llegada, fecha_salida, precio_total } = datosActualizados;
+      console.log('datos que llegan de index' +datosActualizados)
       const sql = 'UPDATE reservas SET id_usuario = ?, id_habitacion = ?, fecha_llegada = ?, fecha_salida = ?, precio_total = ? WHERE id_reserva = ?';
       const values = [id_usuario, id_habitacion, fecha_llegada, fecha_salida, precio_total, id];
       await db.query(sql, values);
@@ -107,18 +108,17 @@ class Listado_reserva {
       await db.disconnect();
     }
   }
-  static async eliminarPorIdReserva(id) {
+  static async eliminarPorIdReserva(id_reserva) {
     const db = new Database();
     await db.connect();
     try {
       const sql = 'DELETE FROM reservas WHERE id_reserva = ?';
-      const values = [id];
+      const values = [id_reserva];
       await db.query(sql, values);
-      console.log('Usuario eliminado correctamente');
-
+      console.log('Reserva eliminada correctamente');
     } catch (err) {
-      console.error(`Error al eliminar el usuario: ${err}`);
-      console.log(err);
+      console.error(`Error al eliminar la reserva: ${err}`);
+      throw err;
     } finally {
       await db.disconnect();
     }
