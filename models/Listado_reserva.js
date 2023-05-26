@@ -17,7 +17,7 @@ class Listado_reserva {
     try {
       const sql = 'SELECT * FROM reservas';
       const result = await db.query(sql);
-      console.log(result);
+      console.log("resultados  " + result);
       return result;
       
     } catch (error) {
@@ -28,21 +28,38 @@ class Listado_reserva {
     }
   }
 
-  static async obtenerPorId(id) {
-    const db = new Database();
-    await db.connect();
-    try {
-      console.log(id);
-      const sql = `SELECT * FROM reservas WHERE id_usuario = ${id} `
-      const result = await db.query(sql);
-      return result;
-    } catch (err) {
-      console.error(`Error al obtener el usuario por ID: ${err}`);
-      throw err;
-    } finally {
-      await db.disconnect();
-    }
+static async obtenerPorId(id) {
+  const db = new Database();
+  await db.connect();
+  try {
+    console.log(id);
+    const sql = 'SELECT * FROM reservas WHERE id_usuario = ?';
+    const result = await db.query(sql, [id]);
+    return result;
+  } catch (err) {
+    console.error(`Error al obtener el usuario por ID: ${err}`);
+    throw err;
+  } finally {
+    await db.disconnect();
   }
+}
+static async obtenerPorIdReserva(id) {
+  const db = new Database();
+  await db.connect();
+  try {
+    console.log(id);
+    const sql = 'SELECT * FROM reservas WHERE id_reserva = ?';
+    const result = await db.query(sql, [id]);
+    console.log("reserva " +result[0]);
+    return result;
+  } catch (err) {
+    console.error(`Error al obtener el usuario por ID: ${err}`);
+    throw err;
+  } finally {
+    await db.disconnect();
+  }
+}
+
 
   static async actualizar(id, datosActualizados) {
     const db = new Database();
@@ -56,6 +73,38 @@ class Listado_reserva {
     } catch (error) {
       console.error(`Error al actualizar el usuario: ${error}`);
       throw error;
+    } finally {
+      await db.disconnect();
+    }
+  }
+  static async actualizarPorIdReserva(id, datosActualizados) {
+    const db = new Database();
+    await db.connect();
+    try {
+      const { id_usuario, id_habitacion, fecha_llegada, fecha_salida, precio_total } = datosActualizados;
+      const sql = 'UPDATE reservas SET id_usuario = ?, id_habitacion = ?, fecha_llegada = ?, fecha_salida = ?, precio_total = ? WHERE id_reserva = ?';
+      const values = [id_usuario, id_habitacion, fecha_llegada, fecha_salida, precio_total, id];
+      await db.query(sql, values);
+      console.log('Usuario actualizado correctamente');
+    } catch (error) {
+      console.error(`Error al actualizar el usuario: ${error}`);
+      throw error;
+    } finally {
+      await db.disconnect();
+    }
+  }
+  static async eliminarPorIdReserva(id) {
+    const db = new Database();
+    await db.connect();
+    try {
+      const sql = 'DELETE FROM reservas WHERE id_reserva = ?';
+      const values = [id];
+      await db.query(sql, values);
+      console.log('Usuario eliminado correctamente');
+
+    } catch (err) {
+      console.error(`Error al eliminar el usuario: ${err}`);
+      console.log(err);
     } finally {
       await db.disconnect();
     }
