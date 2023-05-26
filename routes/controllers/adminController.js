@@ -72,7 +72,7 @@ const actualizarUsuario = async (req, res) => {
     console.log("este es el rol" + rol)
     try {
         await Usuario.actualizar(usuarioId, { correo, contrasena, nombre, rol });
-        res.redirect('/admin_usuarios')
+        res.redirect('/admin_usuarios');
     } catch (err) {
         console.log(err);
         res.redirect('/admin_usuarios')

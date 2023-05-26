@@ -5,6 +5,7 @@
   <title>Reservas usuario </title>
   <link rel="stylesheet" href="resources/css/admin/admin.css">
   <link rel="stylesheet" href="resources/css/estilos_usuarios.css">
+  <link rel="stylesheet" href="resources/css/usuario/reserva.css">
   <link rel="shortcut icon" href="resources/img/Tumaco/logo.png" type="image/x-icon">
   <script src="https://kit.fontawesome.com/b049437614.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -12,7 +13,7 @@
     crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
@@ -25,57 +26,73 @@
       </div>
       <a href="reserva" class="btn__User">Reservar</a>
       <a href="listado_reserva" class="btn__reserva">Mirar mis reservas</a>
-      <a href="logout">Salir</a>
+      <a href="logout" class="btn__User">Cerrar sesión</a>
     </div>
   </header>
   <% if (login) {%>
     <div class="contenedor">
-
-      <h1>¡Bienvenido!</h1>
-      <h1>Usuario conectado: <strong>
-          <%= nombre %>
-        </strong></h1>
-      <form action="" method="post">
-        <select class="form-select" aria-label="Default select example"
-          style="margin-top: 20px; width: 400px;margin-left: auto; margin-right: auto;" name="id_habitacion"
-          id="habitacion_seleccionada">
-          <option selected>Tipo de reserva</option>
-          <option value="1">
-            <%= habitacion[0].tipo %>
-          </option>
-          <option value="2">
-            <%= habitacion[1].tipo %>
-          </option>
-          <option value="3">
-            <%= habitacion[2].tipo %>
-          </option>
-        </select>
-        <div class="inputContainer">
-          <input type="text" class="input" id="id_usuario" value="<%= id_usuario %>" name="id_user" disabled>
-          <label for="" class="label">id usuario ID</label>
-        </div>
-
-        <div class="col" style="margin-top: 20px;">
-          <div class="inputContainer">
-            <input type="text" class="input" id="fecha_llegadaUser" name="fecha_llegada">
-            <label for="" class="label">Fecha de llegada</label>
+      <div class="container__info">
+        <div class="container__bienvenida">
+          <h1>¡Explora y reserva tu estancia en un solo lugar!</h1>
+          <p>Bienvenido a nuestra plataforma aqui encontraras las habitaciones que 
+            tenemos disponibles!
+          </p>
+          <p>Usuario conectado: <strong>
+              <%= nombre %>
+            </strong></p>
+          <div class="img">
+            <img src="resources/img/reserva.svg" alt="">
           </div>
         </div>
-        <div class="inputContainer">
-          <input type="text" class="input" id="fecha_salidaUser" name="fecha_salida">
-          <label for="" class="label">Fecha de Salida</label>
-        </div>
-        <div class="inputContainerButton">
-          <input type="submit" class="submitBtn" value="Actualizar">
-        </div>
-        <div class="inputContainer">
-          <input type="text" class="input" id="precio_total"  name="precio_total">
-          <label for="" class="label">Precio Total</label>
-        </div>
-      </form>
+
+
+        <form action="reserva" method="POST">
+          <div class="form-container">
+            <div class="img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png" class="img2">
+            </div>
+            <select class="form-select" aria-label="Default select example" name="id_habitacion"
+              id="habitacion_seleccionada">
+              <option selected>Tipo de reserva</option>
+              <option value="1">
+                <%= habitacion[0].tipo %>
+              </option>
+              <option value="2">
+                <%= habitacion[1].tipo %>
+              </option>
+              <option value="3">
+                <%= habitacion[2].tipo %>
+              </option>
+            </select>
+            <div class="inputContainer">
+              <input type="text" class="input" id="id_usuario" value="<%= id_usuario %>" name="id_usuario" readonly>
+              <label for="" class="label">id usuario ID</label>
+            </div>
+
+            <div class="col" style="margin-top: 20px;">
+              <div class="inputContainer">
+                <input type="text" class="input" id="fecha_llegadaUser" name="fecha_llegada">
+                <label for="" class="label">Fecha de llegada</label>
+              </div>
+            </div>
+            <div class="inputContainer">
+              <input type="text" class="input" id="fecha_salidaUser" name="fecha_salida">
+              <label for="" class="label">Fecha de Salida</label>
+            </div>
+            <div class="inputContainer">
+              <input type="text" class="input" id="precio_total" name="precio_total">
+              <label class="label">Precio Total</label>
+            </div>
+            <div class="inputContainerButton">
+              <input type="submit" class="submitBtn" value="Agendar">
+            </div>
+            
+          </div>
+        </form>
+      </div>
     </div>
 
-    <a href="logout" class="a-logout">Cerrar sesión</a>
+
 
     <% } else {%>
       <h1>Inicie sesion</h1>
@@ -96,6 +113,8 @@
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="/resources/js/admin/calendario.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <script>
 
           const fechaLlegadaInput = document.getElementById("fecha_llegadaUser");
@@ -145,6 +164,16 @@
 
           }
         </script>
+        <% if (typeof alert !== 'undefined') { %>
+          <script>
+            Swal.fire({
+              title: '<%= alertTitle %>',
+              text: '<%= alertMessage %>',
+              icon: '<%= alertType %>',
+              showConfirmButton: true
+            });
+          </script>
+          <% } %>          
 </body>
 
 </html>

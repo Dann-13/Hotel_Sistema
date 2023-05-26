@@ -69,6 +69,36 @@ router.get('/reserva', async (req, res) => {
     }
     res.end();
 });
+router.post('/reserva', async (req, res) => {
+    const id_habitacion = parseInt(req.body.id_habitacion, 10);
+    console.log('id ' + id_habitacion)
+    const id_usuario = parseInt(req.body.id_usuario, 10);
+    console.log('user ' + id_usuario)
+    const fecha_llegada = new Date(req.body.fecha_llegada);
+    console.log('llegada ' + fecha_llegada)
+    const fecha_salida = new Date(req.body.fecha_salida);
+    console.log('salida ' + fecha_salida)
+    const precio_total = parseFloat(req.body.precio_total);
+    console.log('precio ' + precio_total)
+    try {
+        const nuevaReserva = new Listado_reserva(id_usuario, id_habitacion,fecha_llegada,fecha_salida,precio_total);
+        await nuevaReserva.registrar();
+        const habitacion = await Habitacion.obtenerTodos();
+        res.render('reserva', {
+            login: true,
+            nombre: req.session.nombre,
+            habitacion: habitacion,
+            id_usuario: req.session.id_usuario,
+            alert: true,
+            alertTitle: 'Reserva exitosa',
+            alertMessage: '¡Tu reserva ha sido registrada!',
+            alertType: 'success'
+          });
+    } catch (err) {
+        console.log(err);
+        
+    }
+});
 //Routas globales
 router.get('/logout', function (req, res) {
     req.session.destroy(() => {

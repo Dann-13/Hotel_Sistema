@@ -1,8 +1,7 @@
 const Database = require('./database');
 
 class Listado_reserva {
-  constructor(id_reserva, id_usuario,id_habitacion,  fecha_llegada, fecha_salida, precio_total) {
-    this.id_reserva = id_reserva;
+  constructor( id_usuario, id_habitacion, fecha_llegada, fecha_salida, precio_total) {
     this.id_usuario = id_usuario;
     this.id_habitacion = id_habitacion;
     this.fecha_llegada = fecha_llegada;
@@ -19,7 +18,7 @@ class Listado_reserva {
       const result = await db.query(sql);
       console.log("resultados  " + result);
       return result;
-      
+
     } catch (error) {
       console.error(`Error al obtener los usuarios: ${error}`);
       return [];
@@ -27,38 +26,53 @@ class Listado_reserva {
       await db.disconnect();
     }
   }
+  async registrar() {
+    const db = new Database();
+    await db.connect();
 
-static async obtenerPorId(id) {
-  const db = new Database();
-  await db.connect();
-  try {
-    console.log(id);
-    const sql = 'SELECT * FROM reservas WHERE id_usuario = ?';
-    const result = await db.query(sql, [id]);
-    return result;
-  } catch (err) {
-    console.error(`Error al obtener el usuario por ID: ${err}`);
-    throw err;
-  } finally {
-    await db.disconnect();
+    try {
+      const sql = 'INSERT INTO reservas (id_usuario, id_habitacion, fecha_llegada, fecha_salida, precio_total) VALUES (?, ?, ?, ?, ?)';
+      const values = [this.id_usuario, this.id_habitacion, this.fecha_llegada, this.fecha_salida, this.precio_total];
+      await db.query(sql, values);
+      console.log('Reserva registrada correctamente');
+    } catch (error) {
+      console.error(`Error al registrar el usuario: ${error}`);
+    } finally {
+      await db.disconnect();
+    }
   }
-}
-static async obtenerPorIdReserva(id) {
-  const db = new Database();
-  await db.connect();
-  try {
-    console.log(id);
-    const sql = 'SELECT * FROM reservas WHERE id_reserva = ?';
-    const result = await db.query(sql, [id]);
-    console.log("reserva " +result[0]);
-    return result;
-  } catch (err) {
-    console.error(`Error al obtener el usuario por ID: ${err}`);
-    throw err;
-  } finally {
-    await db.disconnect();
+
+  static async obtenerPorId(id) {
+    const db = new Database();
+    await db.connect();
+    try {
+      console.log(id);
+      const sql = 'SELECT * FROM reservas WHERE id_usuario = ?';
+      const result = await db.query(sql, [id]);
+      return result;
+    } catch (err) {
+      console.error(`Error al obtener el usuario por ID: ${err}`);
+      throw err;
+    } finally {
+      await db.disconnect();
+    }
   }
-}
+  static async obtenerPorIdReserva(id) {
+    const db = new Database();
+    await db.connect();
+    try {
+      console.log(id);
+      const sql = 'SELECT * FROM reservas WHERE id_reserva = ?';
+      const result = await db.query(sql, [id]);
+      console.log("reserva " + result[0]);
+      return result;
+    } catch (err) {
+      console.error(`Error al obtener el usuario por ID: ${err}`);
+      throw err;
+    } finally {
+      await db.disconnect();
+    }
+  }
 
 
   static async actualizar(id, datosActualizados) {

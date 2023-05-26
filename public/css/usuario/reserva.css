@@ -1,0 +1,122 @@
+.contenedor {
+    padding: 15px;
+}
+
+.container__info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img img {
+    width: 300px;
+    height: auto;
+}
+
+.img2 {
+    width: 250px !important;
+    height: auto !important;
+}
+
+form {
+    padding: 30px;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #003053;
+}
+
+.img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    
+}
+
+.img2{
+    width: 100px !important;
+    height: auto !important;
+}
+.form-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.inputContainer {
+    position: relative;
+    margin-top: 20px;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #000;
+}
+.flatpickr-input {
+    color: #003053 !important;
+}
+.label {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    color: #888;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.2s ease-out;
+}
+
+.input:focus+.label,
+.input:not(:placeholder-shown)+.label {
+    top: -19px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.submitBtn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.inputContainerButton {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#precio_total {
+    font-weight: bold;
+}
+
+/* pantallas grandes */
+@media (min-width: 1024px) {
+    .container__info {
+        flex-direction: row;
+    }
+
+    .container__bienvenida {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
