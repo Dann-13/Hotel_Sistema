@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcryptjs = require('bcryptjs');
 const Usuario = require('../../models/Usuario');
 const Listado_reserva = require('../../models/Listado_reserva');
 const Habitaciones = require('../../models/Habitacion');
